@@ -1,0 +1,134 @@
+:root {
+  --future-color: rgb(1, 36, 66);
+  --pirate-color: #3A160E;
+  --western-color: #924A36;
+}
+nav {
+  width: 100%;
+  height: 6vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  font-size: 1.3rem;
+  background-color: aliceblue;
+  z-index: 3;
+}
+nav ul {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  list-style: none;
+}
+nav li {
+  width: 20%;
+  padding: 1.4rem;
+}
+nav li:hover {
+  background-color: white;
+  cursor: pointer;
+}
+video {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+#video-overlay {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+#video-overlay h1 {
+    color: white;
+    text-shadow: 6px 6px 15px rgb(0, 0, 0);
+    font-size: 4rem;
+}
+.container-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#video-footer {
+    width: 70%;
+    height: 10vh;
+    margin-top: -5rem;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.8rem;
+    list-style: none;
+    background-color: aliceblue;
+    z-index: 2;
+}
+#video-footer li {
+    width: 33%;
+    height: 50%;
+}
+#video-footer li:hover {
+    background-color: rgb(199, 199, 199);
+    cursor: pointer;
+}
+#tagline {
+    text-align: center;
+    margin-top: 4rem;
+}
+#tagline h1 {
+    font-size: 4rem;
+}
+#new-attractions-container {
+    width: 70%;
+    margin-top: 5rem;
+    text-align: center;
+}
+#new-attractions {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  text-align: left;
+}
+.attraction-div {
+  width: 30%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  transition: .3s;
+}
+.attraction-div:hover {
+  transform: translateY(1rem);
+  transition: .3s;
+  cursor: pointer;
+}
+.attraction-img-div {
+  width: 100%;
+  height: 60%;
+  background-color: rgb(147, 52, 150);
+}
+.attraction-img-div img {
+  width: 100%;
+  height: 100%;
+}
+.attraction-desc {
+  width: 100%;
+  min-height: 18rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em;
+  color: white;
+}
+.attraction-desc h1 {
+  padding-bottom: 0.5em;
+  font-size: 2.2rem;
+}
+.attraction-desc p {
+  padding-bottom: 0.5em;
+  font-size: 1.3rem;
+}
