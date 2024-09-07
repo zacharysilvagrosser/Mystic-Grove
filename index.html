@@ -23,11 +23,11 @@
     </nav>
     <div id="video-overlay">
         <h1><strong><em>Find your happy place</em></strong></h1>
+        <video autoplay muted loop>
+            <source src="https://videos.pexels.com/video-files/5667464/5667464-hd_1280_720_24fps.mp4" type="video/mp4">
+            Your browser does now support the video tag.
+        </video>
     </div>
-    <video autoplay muted loop>
-        <source src="https://videos.pexels.com/video-files/5667464/5667464-hd_1280_720_24fps.mp4" type="video/mp4">
-        Your browser does now support the video tag.
-    </video>
     <div class="container-center">
         <div class="container-center">
             <ul id="video-footer">
@@ -39,11 +39,11 @@
         <div class="container-fluid" id="tagline">
             <h1><strong>Let Your Imagination Run Wild</strong></h1>
         </div>
-        <img id="border-img" src="imgs/fantasy-border.jpeg" alt="fantasy themed border">
+        <img id="border-img" src="imgs/fantasy-border.png" alt="fantasy themed border">
         <div id="new-attractions-container">
-            <h2>Discover Brand New Attractions</h2>
+            <h2 id="new-attractions-headline">Discover Brand New Attractions</h2>
             <div class="row" data-aos="fade-in" data-aos-duration="1200">
-                <div class="col-xl-4 col-sm-12 attraction-div">
+                <div class="col-xl-4 col-md-6 col-sm-10 attraction-div">
                     <div>
                         <img style="width: 100%" src="imgs/moon-landing-attraction.jpeg" alt="rocket ship launching to the moon">
                     </div>
@@ -52,7 +52,7 @@
                         <p>Hop aboard a rocket ship to experience a once in a lifetime lunar landing with the whole family.</p>
                     </div>
                 </div>
-                <div class="col-xl-4 col-sm-12 attraction-div">
+                <div class="col-xl-4 col-md-6 col-sm-10 attraction-div">
                     <div>
                         <img style="width: 100%" src="imgs/pirates-journey-attraction.jpeg" alt="pirate ship floating over waters at sunset">
                     </div>
@@ -61,7 +61,7 @@
                         <p>Have a swashbuckling good time sailing the seven seas on Captain Brown Beard's Silver Pearl.</p>
                     </div>
                 </div>
-                <div class="col-xl-4 col-sm-12 attraction-div">
+                <div class="col-xl-4 col-md-6 col-sm-10 attraction-div">
                     <div>
                         <img style="width: 100%" src="imgs/western-expedition-attraction.jpeg" alt="minecart coaster ride poster">
                     </div>
@@ -72,29 +72,20 @@
                 </div>
             </div>
         </div>
-        <div class="container-center" id="deals-container">
-            <h2 style="margin-top: 1rem">Find the Best Deals</h2>
-            <div id="deals-div">
-                <div id="deals-div-imgs">
-                    <div style="width: 49%">
-                        <img style="width: 100%; height: auto" src="imgs/kid-with-parents-photo.jpeg" alt="minecart coaster ride poster">
+        <div class="container-fixed" id="deals-container">
+            <h2 style="margin: 2rem 0">Find the Best Deals</h2>
+            <div class="row deals-div">
+                    <img class="col-lg-6 col-12 order-lg-0 img-fluid" style="padding: 0" src="imgs/kid-toy.jpeg" alt="kid holding stuffed animal with parents">                    
+                    <div class="col-xl-4 col-12 order-lg-2">
+                        <h3>Special Offers</h3>
+                        <p>Stay at our resort for 2 days and save 25% on your second day. We'll also include a 25% discount if you stay on site at our Mystic Manor hotel.</p>
                     </div>
-                    <div style="width: 49%">
-                        <img style="width: 100%; height: auto;" src="imgs/kids-coaster-photo.jpeg" alt="minecart coaster ride poster">
-                    </div>
-                </div>
-                <div id="deals-div-desc">
-                    <div>
-                        <h3>Special Offers:</h3>
-                        <p>Stay for 2 days and save 20% on your second day. We'll also include a 20% discount if you stay on site at our Mystic Manor hotel.</p>
-                    </div>
-                    <div>
-                        <img src="imgs/kids-with-food-photo.jpeg" alt="minecart coaster ride poster">
-                    </div>
-                    <div>
-                        <h3>Special Offers:</h3>
-                        <p>Stay for 2 days and save 20% on your second day. We'll also include a 20% discount if you stay on site at our Mystic Manor hotel.</p>
-                    </div>
+                    <img class="col-lg-6 col-12 order-lg-1 img-fluid" style="padding: 0" src="imgs/kids-coaster.jpeg" alt="kids smiling on a roller coaster">
+
+                <img class="d-none d-xl-block col-xl-4 order-lg-3 img-fluid" style="padding: 0" src="imgs/siblings.jpeg" alt="kids smiling on a roller coaster">
+                <div class="col-xl-4 col-12 order-lg-4">
+                    <h3>Limited Time Deal</h3>
+                    <p>Book our hotel from Sept 7-Nov 7 and save 30% on your stay for parties of 4 of more guests.</p>
                 </div>
             </div>
         </div>
