@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Fantasy Grove</title>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
@@ -20,6 +21,7 @@
         <a href="#" class="nav-item nav-link">Tickets</a>
         <a href="#" class="nav-item nav-link">Shopping</a>
         <a href="#" class="nav-item nav-link">Dining</a>
+        <a href="#" class="nav-item nav-link">Hotels</a>
     </nav>
     <div id="video-overlay">
         <h1><strong><em>Find your happy place</em></strong></h1>
@@ -40,56 +42,108 @@
             <h1><strong>Let Your Imagination Run Wild</strong></h1>
         </div>
         <img id="border-img" src="imgs/fantasy-border.png" alt="fantasy themed border">
-        <div id="new-attractions-container">
-            <h2 id="new-attractions-headline">Discover Brand New Attractions</h2>
+        <div class="container-fluid">
+            <h1>Discover Brand New Attractions</h1>
             <div class="row" data-aos="fade-in" data-aos-duration="1200">
-                <div class="col-xl-4 col-md-6 col-sm-10 attraction-div">
+                <div class="col-xl-4 col-md-6 col-sm-12 attraction-div">
                     <div>
                         <img style="width: 100%" src="imgs/moon-landing-attraction.jpeg" alt="rocket ship launching to the moon">
                     </div>
-                    <div class="attraction-desc" style="background-color: rgb(1, 36, 66)">
+                    <div class="desc-div" style="background-color: rgb(1, 36, 66)">
                         <h2>Moon Landing</h2>
                         <p>Hop aboard a rocket ship to experience a once in a lifetime lunar landing with the whole family.</p>
                     </div>
                 </div>
-                <div class="col-xl-4 col-md-6 col-sm-10 attraction-div">
+                <div class="col-xl-4 col-md-6 col-sm-12 attraction-div">
                     <div>
                         <img style="width: 100%" src="imgs/pirates-journey-attraction.jpeg" alt="pirate ship floating over waters at sunset">
                     </div>
-                    <div class="attraction-desc" style="background-color: #3A160E">
+                    <div class="desc-div" style="background-color: #3A160E">
                         <h2>Pirate's Journey</h2>
                         <p>Have a swashbuckling good time sailing the seven seas on Captain Brown Beard's Silver Pearl.</p>
                     </div>
                 </div>
-                <div class="col-xl-4 col-md-6 col-sm-10 attraction-div">
+                <div class="col-xl-4 col-md-6 col-sm-12 attraction-div">
                     <div>
                         <img style="width: 100%" src="imgs/western-expedition-attraction.jpeg" alt="minecart coaster ride poster">
                     </div>
-                    <div class="attraction-desc" style="background-color: #924A36">
+                    <div class="desc-div" style="background-color: #924A36">
                         <h2>Western Expedition</h2>
                         <p>Travel back in time to the old wild west on this thrilling wooden coaster through an abandoned mine shaft.</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container-fixed" id="deals-container">
-            <h2 style="margin: 2rem 0">Find the Best Deals</h2>
-            <div class="row deals-div">
-                    <img class="col-lg-6 col-12 order-lg-0 img-fluid" style="padding: 0" src="imgs/kid-toy.jpeg" alt="kid holding stuffed animal with parents">                    
-                    <div class="col-xl-4 col-12 order-lg-2">
-                        <h3>Special Offers</h3>
-                        <p>Stay at our resort for 2 days and save 25% on your second day. We'll also include a 25% discount if you stay on site at our Mystic Manor hotel.</p>
-                    </div>
-                    <img class="col-lg-6 col-12 order-lg-1 img-fluid" style="padding: 0" src="imgs/kids-coaster.jpeg" alt="kids smiling on a roller coaster">
-
+        <div class="container-fluid">
+            <h1>Find the Best Deals</h1>
+            <div class="row" data-aos="fade-in" data-aos-duration="2000">
+                <img class="col-lg-6 col-12 order-lg-0 img-fluid" style="padding: 0" src="imgs/kid-toy.jpeg" alt="kid holding stuffed animal with parents">                    
+                <div class="col-xl-4 col-12 order-lg-2 text-square">
+                    <h3>Special Offers</h3>
+                    <p>Stay at our resort for 2 days and save 25% on your second day. We'll also include a 25% discount if you stay on site at our Mystic Manor hotel.</p>
+                </div>
+                <img class="col-lg-6 col-12 order-lg-1 img-fluid" style="padding: 0" src="imgs/kids-coaster.jpeg" alt="kids smiling on a roller coaster">
                 <img class="d-none d-xl-block col-xl-4 order-lg-3 img-fluid" style="padding: 0" src="imgs/siblings.jpeg" alt="kids smiling on a roller coaster">
-                <div class="col-xl-4 col-12 order-lg-4">
+                <div class="col-xl-4 col-12 order-lg-4 text-square">
                     <h3>Limited Time Deal</h3>
                     <p>Book our hotel from Sept 7-Nov 7 and save 30% on your stay for parties of 4 of more guests.</p>
                 </div>
             </div>
         </div>
+        <div class="container-fluid">
+            <h1>World Class Dining</h1>
+            <div class="row" data-aos="fade-in" data-aos-duration="2000">
+                <div class="col-lg-6 col-12 attraction-div">
+                    <div>
+                        <img style="width: 100%" src="imgs/space-restaurant.jpeg" alt="a space themed restaurant">
+                    </div>
+                    <div class="desc-div" style="background-color: rgb(1, 36, 66)">
+                        <h2>Neptune's Landing</h2>
+                        <p>Take a rocket to Neptune to enjoy the locals exotic cuisine.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12 attraction-div">
+                    <div>
+                        <img style="width: 100%" src="imgs/fae-forest-restaurant.jpeg" alt="a fairy forest themed restaurant">
+                    </div>
+                    <div class="desc-div" style="background-color: #233a0e">
+                        <h2>Forest Grill</h2>
+                        <p>Dine on the habitats local flora and fauna in a mystical forest.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <h1>Shop Till You Drop</h1>
+            <div class="row">
+                <img class="col-xl-4 col-md-6 col-12 order-xl-0 order-md-0 order-0 img-fluid" style="padding: 0; width: 100%" src="imgs/pirate-shop.jpeg" alt="a fairy forest themed restaurant">
+                <img class="col-xl-4 col-md-6 col-12 order-xl-2 order-md-1 order-2 d-none d-md-block img-fluid" style="padding: 0; width: 100%" src="imgs/western-shop.jpeg" alt="a fairy forest themed restaurant">
+                <div class="col-xl-4 col-md-12 col-12 order-xl-1 order-md-2 order-1 text-square">
+                    <p>Commemorate your visit with a uniquely themed souvenir.
+                    <br><br>Explore our immersive shopping districts like Pirates Cove and The Trading Post to find the best deals on our newest merchandise.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <img style="width: 100%;" src="imgs/park-map2.jpeg" alt="a fairy forest themed restaurant">
+        </div>
     </div>
+    <footer>
+        <h4>Stay Connected</h4>
+        <div>
+            <a href="https://www.facebook.com/" target="_blank" class="fa fa-facebook"></a>
+            <a href="https://www.youtube.com/" target="_blank" class="fa fa-youtube"></a>
+            <a href="https://x.com/?lang=en" target="_blank" class="fa fa-twitter" ></a>
+            <a href="https://www.instagram.com/" target="_blank" class="fa fa-instagram"></a>
+        </div>
+        <ul>
+            <li>Park Map</li>
+            <li>Guest Services</li>
+            <li>Terms of Use</li>
+            <li>Legal Notices</li>
+        </ul>
+        <p>© Mystic Grove, All Rights Reserved</p>
+    </footer>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();

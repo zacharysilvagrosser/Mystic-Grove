@@ -3,6 +3,11 @@
   --pirate-color: #3A160E;
   --western-color: #924A36;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .hamburger-menu {
   width: 35px;
   height: 5px;
@@ -37,9 +42,9 @@ nav li:hover {
   cursor: pointer;
 }
 video {
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
 }
 #video-div {
   width: 100%;
@@ -69,6 +74,7 @@ video {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: #ecfbff;
 }
 #video-footer {
   width: 80%;
@@ -86,38 +92,34 @@ video {
   z-index: 2;
 }
 #video-footer li {
-    width: 33%;
-    height: 50%;
+  width: 33%;
+  height: 50%;
 }
 #video-footer li:hover {
-    background-color: rgb(199, 199, 199);
-    cursor: pointer;
+  background-color: rgb(199, 199, 199);
+  cursor: pointer;
 }
 #tagline {
-    text-align: center;
-    margin-top: 4rem;
+  text-align: center;
+  margin-top: 4rem;
 }
 #tagline h1 {
-    font-size: 4rem;
+  font-size: 4rem;
 }
 #border-img {
   width: 50%;
   height: 35vh;
   margin-top: 3rem;
 }
-#new-attractions-container {
+.container-fluid {
   width: 80%;
   margin-top: 5rem;
   text-align: center;
 }
-#new-attractions-headline {
+.container-fluid h1 {
   margin-bottom: 2rem;
 }
 .attraction-div {
-  margin: auto;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
   text-align: left;
   transition: .3s;
 }
@@ -126,7 +128,7 @@ video {
   transition: .3s;
   cursor: pointer;
 }
-.attraction-desc {
+.desc-div {
   width: 100%;
   height: 25vh;
   display: flex;
@@ -136,46 +138,97 @@ video {
   color: white;
   margin-bottom: 2rem;
 }
-.attraction-desc h2 {
+.desc-div h2 {
   padding-bottom: 0.1em;
   font-size: calc(.8em + 2vmin);
 }
-.attraction-desc p {
+.desc-div p {
   font-size: calc(.5em + 1.45vmin);
 }
-#deals-container {
-  width: 80%;
-  height: 95vh;
+#deals-container h1 {
+  margin: 3rem;
+  padding-top: 4rem;
+}
+.text-square {
+  background-color: rgb(218, 238, 255);
+  cursor: pointer;
+  transition: .3s;
+}
+.text-square:hover {
+  background-color: rgb(192, 215, 233);
+  transition: .3s;
+}
+.text-square h3 {
+  padding-top: 1.3rem;
+  font-size: calc(.4em + 2.8vmin);
+  text-align: center;
+}
+.text-square p {
+  padding: 1.3rem 1rem;
+  font-size: calc(.8em + 1vmin);
+  color: black;
+  text-align: left;
+}
+footer {
+  width: 100%;
+  height: 30vh;
+  margin-top: 5rem;
   display: flex;
   flex-direction: column;
-  margin: auto;
-  background-color: #3A160E;
+  align-items: center;
+  justify-content: space-around;
+  background-color: var(--future-color);
+  color: white;
 }
-#deals-div {
-  width: 100%;
-  height: 95vh;
+footer h4 {
+  font-size: 1.6rem;
+  margin-top: 1rem;
+}
+footer div {
   display: flex;
-  flex-direction: column;
-  margin: auto;
-  background-color: #616161;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
-#deals-div-imgs {
-  width: 100%;
-  height: 40%;
+footer ul {
+  list-style: none;
   display: flex;
+  flex-direction: row;
 }
-#deals-div-desc {
-  width: 100%;
-  height: 40%;
+footer li {
   display: flex;
+  justify-content: space-around;
+  list-style: none;
+  font-size: 1.2rem;
+  padding: 0 1rem;
+  border-right: 1px solid white;
 }
-#deals-div-desc h3 {
-
+.fa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-size: 34px;
+  width: 65px;
+  margin: .5rem;
 }
-#deals-div-desc img {
-  width: 33%;
+.fa-facebook {
+  background: #3B5998;
+  color: white;
 }
-@media only screen and (max-width: 800px) {
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+} 
+.fa-youtube {
+  background: #FF0000;
+  color: white;
+} 
+.fa-instagram {
+  background: #fd1d1d;
+  color: white;
+} 
+@media only screen and (max-width: 767px) {
   .hamburger-menu {
     display: block;
   }
@@ -204,17 +257,40 @@ video {
     width: 60%;
     height: 20vh;
   }
+  .text-square h3 {
+    font-size: 1.5rem;
+  }
+  .text-square p {
+    font-size: 1rem;
+  }
+  footer h4 {
+    font-size: 1.4rem;
+  }
+  footer ul li {
+    font-size: .8rem;
+  }
+  .fa {
+    padding: 15px;
+    font-size: 26px;
+    width: 49px;
+    margin: .5rem;
+  }
 }
 @media only screen and (max-width: 575px) {
+  .container-fluid {
+    width: 100%;
+    margin-top: 5rem;
+    text-align: center;
+  }
   #video-overlay h1 {
     font-size: 2rem;
   }
-  .attraction-desc {
+  .desc-div {
     height: 17vh;
   }
-  #new-attractions-headline {
+  .container-fluid h1 {
     margin-bottom: 1.5rem;
-    font-size: calc(.9em + 2.2vmin);
+    font-size: calc(1.2rem + 2.5vmin);
   }
   #tagline h1 {
     font-size: 1.6rem;
@@ -222,5 +298,8 @@ video {
   #border-img {
     width: 80%;
     height: 15vh;
+  }
+  .text-square p {
+    font-size: 1rem;
   }
 }
