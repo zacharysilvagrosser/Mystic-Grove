@@ -22,7 +22,7 @@ nav {
   justify-content: center;
   position: fixed;
   font-size: 1.3rem;
-  background-color: aliceblue;
+  background-color: var(--future-color);
   z-index: 3;
 }
 nav ul {
@@ -74,7 +74,6 @@ video {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #ecfbff;
 }
 #video-footer {
   width: 80%;
@@ -227,7 +226,40 @@ footer li {
 .fa-instagram {
   background: #fd1d1d;
   color: white;
-} 
+}
+/* ATTRACTIONS PAGE */
+#attractions-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#attraction-land-sorter {
+  width: 70%;
+  height: 40px;
+  font-size: 1.3rem;
+}
+.attraction-type-sorter {
+  display: flex;
+  font-size: 1.3rem;
+}
+.attraction-type-sorter button {
+  height: 100px;
+  background-color: white;
+  border: 2px solid var(--future-color);
+  border-radius: 10px;
+}
+.attraction-type-sorter button:hover {
+  border-color: rgb(161, 171, 194);
+}
+.attraction {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 767px) {
   .hamburger-menu {
     display: block;
