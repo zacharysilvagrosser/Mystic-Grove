@@ -2,6 +2,27 @@
   --future-color: rgb(1, 36, 66);
   --pirate-color: #3A160E;
   --western-color: #924A36;
+  --forest-color: rgb(3, 97, 3);
+  --hallowwood-color: rgb(250, 174, 32);
+  --worlds-fair-color: rgb(195, 47, 253);
+}
+.future-world {
+  color: var(--future-color);
+}
+.pirate-island {
+  color: var(--pirate-color);
+}
+.the-old-frontier {
+  color: var(--western-color);
+}
+.fae-forest {
+  color: var(--forest-color);
+}
+.hallowwood {
+  color: var(--hallowwood-color);
+}
+.worlds-fair {
+  color: var(--worlds-fair-color);
 }
 * {
   margin: 0;
@@ -259,7 +280,10 @@ footer li {
   border-bottom: 1px solid black;
   cursor: pointer;
 }
-
+/*.attraction-type-sorter:last-child button {
+  background-color: var(--future-color);
+  color: white;
+}*/
 @media only screen and (max-width: 767px) {
   .hamburger-menu {
     display: block;
