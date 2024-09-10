@@ -64,12 +64,10 @@ createAttraction("the-monster-mash", "The Monster Mash", "hallowwood", "Hallowwo
 // SORT ATTRACTIONS INTO ARRAYS BY ATTRACTION TYPE
 let [thrillRides, gentleRides, characters, shows, kids, teens, adults, allAges] = [[], [], [], [], [], [], [], []];
 let [thrillRidesActive, gentleRidesActive, charactersActive, showsActive, kidsActive, teensActive, adultsActive, allAgesActive] = [false, false, false, false, false, false, false, false];
-let attractionTypes = [thrillRides, gentleRides, characters, shows];
-let ageTypes = [kids, teens, adults, allAges];
-let activeAttractions = [thrillRidesActive, gentleRidesActive, charactersActive, showsActive];
-let activeAges = [kidsActive, teensActive, adultsActive, allAgesActive]
+let attractionTypeArrays = [thrillRides, gentleRides, characters, shows, kids, teens, adults, allAges];
+let activeAttractions = [thrillRidesActive, gentleRidesActive, charactersActive, showsActive, kidsActive, teensActive, adultsActive, allAgesActive];
 let attractionButtons = ["#thrill-rides-button", "#gentle-rides-button", "#characters-button", "#shows-button", "#kids-button", "#teens-button", "#adults-button", "#all-ages-button"];
-let ageButtons = ["#kids-button", "#teens-button", "#adults-button", "#all-ages-button"];
+let attractionTypeStrings = ["Thrill Rides", "Gentle Rides", "Characters", "Shows", "Kids", "Teens", "Adults", "All Ages"];;
 function sortAttractions(attractionType, array) {
     $('.attraction').each (function() {
         if (this.innerHTML.includes(`${attractionType}`)) {
@@ -85,104 +83,111 @@ sortAttractions("Kids", kids);
 sortAttractions("Teens", teens);
 sortAttractions("Adults", adults);
 sortAttractions("All Ages", allAges);
-// UPDATE VISIBILITY OF ATTRACTIONS IF THEY ARE ACTIVELY CLICKED ON OR NOT
-function changeAttractionVisibility(trigger, attraction) {
-    if (trigger === "Thrill Rides") {
-        if (activeAttractions[0]) {
-            activeAttractions[0] = false;
+function updateActiveRides() {
+    attractionTypeArrays.forEach(i => {
+        $(i).hide();
+    });
+    let activeRides = [];
+    if (activeAttractions[0]) {
+        thrillRides.forEach(i => {
+            activeRides.push(i);
+        });
+    }
+    if (activeAttractions[1]) {
+        gentleRides.forEach(i => {
+            activeRides.push(i);
+        });
+    }
+    if (activeAttractions[2]) {
+        characters.forEach(i => {
+            activeRides.push(i);
+        });
+    }
+    if (activeAttractions[3]) {
+        shows.forEach(i => {
+            activeRides.push(i);
+        });
+    }
+    console.log(activeAttractions[4]);// active triggers not triggering
+    $(activeRides).show();
+    if (activeAttractions[4] || activeAttractions[5] || activeAttractions[6] || activeAttractions[7]) {
+            //if(!activeAttractions[0] && !activeAttractions[1] && !activeAttractions[2] && !activeAttractions[3]) 
+        if (!activeAttractions[4]) {
+            activeRides.forEach(k => {
+                if (k.innerHTML.includes(`Kids`)) {
+                    $(k).hide();
+                }
+            });
         } else {
-            activeAttractions[0] = true;
+            
         }
-    } else if (trigger === "Gentle Rides") {
-        if (activeAttractions[1]) {
-            activeAttractions[1] = false;
-        } else {
-            activeAttractions[1] = true;
+        if (!activeAttractions[5]) {
+            console.log("YES")
+            activeRides.forEach(k => {
+                if (k.innerHTML.includes(`Teens`)) {
+                    $(k).hide();
+                }
+            });
         }
-    } else if (trigger === "Characters") {
-        if (activeAttractions[2]) {
-            activeAttractions[2] = false;
-        } else {
-            activeAttractions[2] = true;
+        if (!activeAttractions[6]) {
+            activeRides.forEach(k => {
+                if (k.innerHTML.includes(`Adults`)) {
+                    $(k).hide();
+                }
+                if (teensActive && k.innerHTML.includes(`Teens`)) {
+                    $(k).show();
+                }
+            });
         }
-    } else if (trigger === "Shows") {
-        if (activeAttractions[3]) {
-            activeAttractions[3] = false;
-        } else {
-            activeAttractions[3] = true;
-        }
-    } else if (trigger === "Kids") {
-        if (activeAges[0]) {
-            activeAges[0] = false;
-        } else {
-            activeAges[0] = true;
-        }
-    } else if (trigger === "Teens") {
-        if (activeAges[1]) {
-            activeAges[1] = false;
-        } else {
-            activeAges[1] = true;
-        }
-    } else if (trigger === "Adults") {
-        if (activeAges[2]) {
-            activeAges[2] = false;
-        } else {
-            activeAges[2] = true;
-        }
-    } else if (trigger === "All Ages") {
-        if (activeAges[3]) {
-            activeAges[3] = false;
-        } else {
-            activeAges[3] = true;
+        if (!activeAttractions[7]) {
+            activeRides.forEach(k => {
+                if (k.innerHTML.includes(`All Ages`)) {
+                    $(k).hide();
+                }
+            });
         }
     }
-    if (attraction) {
-        for (let i = 0; i < attractionTypes.length; i++) {
+    console.log(activeRides);
+}
+// UPDATE VISIBILITY OF ATTRACTIONS IF THEY ARE ACTIVELY CLICKED ON OR NOT
+function changeActiveAttractionButton(trigger) {
+    for (let i = 0; i < attractionTypeStrings.length; i++) {
+        if (trigger === attractionTypeStrings[i]) {
             if (activeAttractions[i]) {
-                $(attractionTypes[i]).show();
-                $(attractionButtons[i]).css('background-color','var(--future-color)');
-                $(attractionButtons[i]).css('color', 'white');
-            } else {
-                $(attractionTypes[i]).hide();
+                activeAttractions[i] = false;
                 $(attractionButtons[i]).css('background-color','white');
                 $(attractionButtons[i]).css('color', 'black');
-            }
-        }
-    } else {
-        for (let i = 0; i < ageTypes.length; i++) {
-            if (activeAges[i]) {
-                $(ageTypes[i]).show();
-                $(ageButtons[i]).css('background-color','var(--future-color)');
-                $(ageButtons[i]).css('color', 'white');
             } else {
-                $(ageTypes[i]).hide();
-                $(ageButtons[i]).css('background-color','white');
-                $(ageButtons[i]).css('color', 'black');
+                activeAttractions[i] = true;
+                console.log(attractionTypeStrings[i], activeAttractions[i]);
+                $(attractionButtons[i]).css('background-color','var(--future-color)');
+                $(attractionButtons[i]).css('color', 'white');
             }
         }
     }
+    updateActiveRides();
 }
 $("#thrill-rides-button").click(function() {
-    changeAttractionVisibility("Thrill Rides", true);
+    changeActiveAttractionButton("Thrill Rides", true);
 });
 $("#gentle-rides-button").click(function() {
-    changeAttractionVisibility("Gentle Rides", true);
+    changeActiveAttractionButton("Gentle Rides", true);
 });
 $("#characters-button").click(function() {
-    changeAttractionVisibility("Characters", true);
+    changeActiveAttractionButton("Characters", true);
 });
 $("#shows-button").click(function() {
-    changeAttractionVisibility("Shows", true);
+    changeActiveAttractionButton("Shows", true);
 });
 $("#kids-button").click(function() {
-    changeAttractionVisibility("Kids", false);
+    changeActiveAttractionButton("Kids", false);
 });
 $("#teens-button").click(function() {
-    changeAttractionVisibility("Teens", false);
+    changeActiveAttractionButton("Teens", false);
 });
 $("#adults-button").click(function() {
-    changeAttractionVisibility("Adults", false);
+    changeActiveAttractionButton("Adults", false);
 });
 $("#all-ages-button").click(function() {
-    changeAttractionVisibility("All Ages", false);
+    changeActiveAttractionButton("All Ages", false);
 });
