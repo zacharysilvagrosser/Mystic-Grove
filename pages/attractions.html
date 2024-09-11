@@ -28,14 +28,13 @@
         <div id="attractions-header">
           <h1>Attractions and Experiences</h1>
           <div style="width: 50%; display: flex; justify-content: flex-end;">
-            <select name="attraction-land-sorter" id="attraction-land-sorter">
+            <select name="attraction-land-sorter" id="attraction-land-sorter" onchange="changeActiveLand()">
               <option value="all-lands">All Lands</option>
-              <option value="future-world">Future World</option>
-              <option value="pirate-island">Pirate Island</option>
               <option value="fae-forest">Fae Forest</option>
+              <option value="future-world">Future World</option>
               <option value="hallowwood">Hallowwood</option>
-              <option value="the-old-frontier">The Old Frontier</option>
-              <option value="worlds-fair">World's Fair</option>
+              <option value="pirate-island">Pirate Island</option>
+              <option value="wild-west">Wild West</option>
             </select>
           </div>
         </div>
@@ -48,10 +47,10 @@
               <button class="col-md-12 col-4" id="gentle-rides-button">Gentle Rides</button>
             </div>
             <div class="col-3">
-              <button class="col-md-12 col-4" id="shows-button">Shows</button>
+              <button class="col-md-12 col-4" id="characters-button">Characters</button>
             </div>
             <div class="col-3">
-              <button class="col-md-12 col-4" id="characters-button">Characters</button>
+              <button class="col-md-12 col-4" id="shows-button">Shows</button>
             </div>
           </div>
           <div class="attraction-type-sorter" class="row" style="margin-bottom: 4rem; width: 100%">
