@@ -251,6 +251,9 @@ footer li:last-child {
   color: white;
 }
 /* ATTRACTIONS PAGE */
+#attractions-page-container {
+  padding-top: 5rem;
+}
 #attractions-header {
   width: 100%;
   display: flex;
@@ -349,6 +352,9 @@ footer li:last-child {
   }
   #attractions-container {
     width: 90%;
+  }
+  #attractions-page-container {
+    padding-top: 2rem;
   }
 }
 @media only screen and (max-width: 575px) {

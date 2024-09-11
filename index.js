@@ -83,125 +83,55 @@ sortAttractions("Kids", kids);
 sortAttractions("Teens", teens);
 sortAttractions("Adults", adults);
 sortAttractions("All Ages", allAges);
-
+// ACTIVELAND CHANGES SELECT ELEMENT VALUE INTO A SPACED UPPERCASE STRING SO LANDS CAN BE CHANGED FORM THE SELECT ELEMENT
 let activeLand = document.getElementById("attraction-land-sorter").value.replace("-"," ").split(" ");
 for (let i = 0; i < activeLand.length; i++) {
     activeLand[i] = activeLand[i][0].toUpperCase() + activeLand[i].substr(1);
 }
-
+// RUNS WHEN LAND SELECT ELEMENT IS CHANGED
 function changeActiveLand() {
+    // UPDATES WHICH LANDS ARE SHOWN BASED ON THE VALUE OF THE LAND SELECT ELEMENT
+    function updateLand(land) {
+        activeLand = document.getElementById("attraction-land-sorter").value.replace("-"," ").split(" ");
+        for (let i = 0; i < activeLand.length; i++) {
+            activeLand[i] = activeLand[i][0].toUpperCase() + activeLand[i].substr(1);
+        }
+        for (let i = 0; i < attractionTypeArrays.length; i++) {
+            for (let j = 0; j < attractionTypeArrays[i].length; j++) {
+                if (!attractionTypeArrays[i][j].innerHTML.includes(`${land}`)) {
+                    $(attractionTypeArrays[i][j]).hide();
+                } else if (attractionTypeArrays[i][j].innerHTML.includes(`${land}`)) {
+                    activeRides.push(attractionTypeArrays[i][j]);
+                    if (!activeAttractions[0] && !activeAttractions[1] && !activeAttractions[2] && !activeAttractions[3] && !activeAttractions[4] && !activeAttractions[5] && !activeAttractions[6] && !activeAttractions[7]) {
+                        $(attractionTypeArrays[i][j]).show();
+                    } else {
+                        updateActiveRides();
+                    }
+                }
+            }
+        }
+    }
     switch (document.getElementById("attraction-land-sorter").value) {
         case "fae-forest":
-            activeLand = document.getElementById("attraction-land-sorter").value.replace("-"," ").split(" ");
-            for (let i = 0; i < activeLand.length; i++) {
-                activeLand[i] = activeLand[i][0].toUpperCase() + activeLand[i].substr(1);
-            }
-            activeLand.join(" ");
-            for (let i = 0; i < attractionTypeArrays.length; i++) {
-                for (let j = 0; j < attractionTypeArrays[i].length; j++) {
-                    if (!attractionTypeArrays[i][j].innerHTML.includes(`Fae Forest`)) {
-                        $(attractionTypeArrays[i][j]).hide();
-                    } else if (attractionTypeArrays[i][j].innerHTML.includes(`Fae Forest`)) {
-                        activeRides.push(attractionTypeArrays[i][j]);
-                        if (!activeAttractions[0] && !activeAttractions[1] && !activeAttractions[2] && !activeAttractions[3] && !activeAttractions[4] && !activeAttractions[5] && !activeAttractions[6] && !activeAttractions[7]) {
-                            $(attractionTypeArrays[i][j]).show();
-                        } else {
-                            updateActiveRides();
-                        }
-                    }
-                }
-            }
+            updateLand("Fae Forest");
             break;
         case "future-world":
-            activeLand = document.getElementById("attraction-land-sorter").value.replace("-"," ").split(" ");
-            for (let i = 0; i < activeLand.length; i++) {
-                activeLand[i] = activeLand[i][0].toUpperCase() + activeLand[i].substr(1);
-            }
-            activeLand.join(" ");
-            for (let i = 0; i < attractionTypeArrays.length; i++) {
-                for (let j = 0; j < attractionTypeArrays[i].length; j++) {
-                    if (!attractionTypeArrays[i][j].innerHTML.includes(`Future World`)) {
-                        $(attractionTypeArrays[i][j]).hide();
-                    } else if (attractionTypeArrays[i][j].innerHTML.includes(`Future World`)) {
-                        activeRides.push(attractionTypeArrays[i][j]);
-                        if (!activeAttractions[0] && !activeAttractions[1] && !activeAttractions[2] && !activeAttractions[3] && !activeAttractions[4] && !activeAttractions[5] && !activeAttractions[6] && !activeAttractions[7]) {
-                            $(attractionTypeArrays[i][j]).show();
-                        } else {
-                            updateActiveRides();
-                        }
-                    }
-                }
-            }
+            updateLand("Future World");
             break;
         case "hallowwood":
-            activeLand = document.getElementById("attraction-land-sorter").value.replace("-"," ").split(" ");
-            for (let i = 0; i < activeLand.length; i++) {
-                activeLand[i] = activeLand[i][0].toUpperCase() + activeLand[i].substr(1);
-            }
-            activeLand.join(" ");
-            for (let i = 0; i < attractionTypeArrays.length; i++) {
-                for (let j = 0; j < attractionTypeArrays[i].length; j++) {
-                    if (!attractionTypeArrays[i][j].innerHTML.includes(`Hallowwood`)) {
-                        $(attractionTypeArrays[i][j]).hide();
-                    } else if (attractionTypeArrays[i][j].innerHTML.includes(`Hallowwood`)) {
-                        activeRides.push(attractionTypeArrays[i][j]);
-                        if (!activeAttractions[0] && !activeAttractions[1] && !activeAttractions[2] && !activeAttractions[3] && !activeAttractions[4] && !activeAttractions[5] && !activeAttractions[6] && !activeAttractions[7]) {
-                            $(attractionTypeArrays[i][j]).show();
-                        } else {
-                            updateActiveRides();
-                        }
-                    }
-                }
-            }
+            updateLand("Hallowwood");
             break;
         case "pirate-island":
-            activeLand = document.getElementById("attraction-land-sorter").value.replace("-"," ").split(" ");
-            for (let i = 0; i < activeLand.length; i++) {
-                activeLand[i] = activeLand[i][0].toUpperCase() + activeLand[i].substr(1);
-            }
-            activeLand.join(" ");
-            for (let i = 0; i < attractionTypeArrays.length; i++) {
-                for (let j = 0; j < attractionTypeArrays[i].length; j++) {
-                    if (!attractionTypeArrays[i][j].innerHTML.includes(`Pirate Island`)) {
-                        $(attractionTypeArrays[i][j]).hide();
-                    } else if (attractionTypeArrays[i][j].innerHTML.includes(`Pirate Island`)) {
-                        activeRides.push(attractionTypeArrays[i][j]);
-                        if (!activeAttractions[0] && !activeAttractions[1] && !activeAttractions[2] && !activeAttractions[3] && !activeAttractions[4] && !activeAttractions[5] && !activeAttractions[6] && !activeAttractions[7]) {
-                            $(attractionTypeArrays[i][j]).show();
-                        } else {
-                            updateActiveRides();
-                        }
-                    }
-                }
-            }
+            updateLand("Pirate Island");
         break;
         case "wild-west":
-            activeLand = document.getElementById("attraction-land-sorter").value.replace("-"," ").split(" ");
-            for (let i = 0; i < activeLand.length; i++) {
-                activeLand[i] = activeLand[i][0].toUpperCase() + activeLand[i].substr(1);
-            }
-            activeLand.join(" ");
-            for (let i = 0; i < attractionTypeArrays.length; i++) {
-                for (let j = 0; j < attractionTypeArrays[i].length; j++) {
-                    if (!attractionTypeArrays[i][j].innerHTML.includes(`Wild West`)) {
-                        $(attractionTypeArrays[i][j]).hide();
-                    } else if (attractionTypeArrays[i][j].innerHTML.includes(`Wild West`)) {
-                        activeRides.push(attractionTypeArrays[i][j]);
-                        if (!activeAttractions[0] && !activeAttractions[1] && !activeAttractions[2] && !activeAttractions[3] && !activeAttractions[4] && !activeAttractions[5] && !activeAttractions[6] && !activeAttractions[7]) {
-                            $(attractionTypeArrays[i][j]).show();
-                        } else {
-                            updateActiveRides();
-                        }
-                    }
-                }
-            }
+            updateLand("Wild West");
             break;
         default:
             activeLand = document.getElementById("attraction-land-sorter").value.replace("-"," ").split(" ");
             for (let i = 0; i < activeLand.length; i++) {
                 activeLand[i] = activeLand[i][0].toUpperCase() + activeLand[i].substr(1);
             }
-            activeLand.join(" ");
             for (let i = 0; i < attractionTypeArrays.length; i++) {
                 for (let j = 0; j < attractionTypeArrays[i].length; j++) {
                     activeRides.push(attractionTypeArrays[i][j]);
@@ -225,7 +155,6 @@ function updateActiveRides() {
         if (activeAttractions[i] || !activeAttractions[0] && !activeAttractions[1] && !activeAttractions[2] && !activeAttractions[3] && !activeAttractions[4] && !activeAttractions[5] && !activeAttractions[6] && !activeAttractions[7]) {
             for (let j = 0; j < attractionTypeArrays[i].length; j++) {
                 if (attractionTypeArrays[i][j].innerHTML.includes(activeLand.join(" ")) || activeLand.join(" ") === "All Lands") {
-                    console.log("YAR");
                     attractionTypeArrays[i].forEach(j => {
                         activeRides.push(j);
                     });
@@ -234,7 +163,7 @@ function updateActiveRides() {
         }
     }
     $(activeRides).show();
-    console.log(activeRides);
+    // HIDE ANY LAND THAT DOESN'T MATCH WHICH BUTTONS ARE SELECTED
     switch (document.getElementById("attraction-land-sorter").value) {
         case "fae-forest":
             activeRides.forEach(i => {
@@ -277,9 +206,8 @@ function updateActiveRides() {
             });
             break;
     }
-    // HIDE ALL ATTRACTION TYPES THAT INCLUDE KEYWORDS
+    // HIDE ANY ATTRACTIONS THAT DON'T MATCH WHICH BUTTONS ARE SELECTED
     if (activeAttractions[4] || activeAttractions[5] || activeAttractions[6] || activeAttractions[7]) {
-        console.log("YEEHAW");
         if (!activeAttractions[4]) {
             activeRides.forEach(k => {
                 if (k.innerHTML.includes(`Kids`)) {
@@ -289,22 +217,17 @@ function updateActiveRides() {
         }
         if (!activeAttractions[5]) {
             activeRides.forEach(k => {
-                if (k.innerHTML.includes(`Teens`)) {
+                if (k.innerHTML.includes(`Teens`) && (!k.innerHTML.includes("Adults") && activeAttractions[6])) {
                     $(k).hide();
-                }
-                if (activeAttractions[6] && k.innerHTML.includes(`Adults`) && k.innerHTML.includes(activeLand.join(" "))) {
-                    $(k).show();
                 }
             });
         }
         if (!activeAttractions[6]) {
             activeRides.forEach(k => {
-                if (k.innerHTML.includes(`Adults`)) {
+                if (k.innerHTML.includes(`Adults`) && (!k.innerHTML.includes("Teens") && activeAttractions[5])) {
                     $(k).hide();
                 }
-                if (activeAttractions[5] && k.innerHTML.includes(`Teens`) && k.innerHTML.includes(activeLand.join(" "))) {
-                    $(k).show();
-                }
+                
             });
         }
         if (!activeAttractions[7]) {
@@ -316,35 +239,14 @@ function updateActiveRides() {
         }
     }
     if (activeAttractions[0] || activeAttractions[1] || activeAttractions[2] || activeAttractions[3]) {
-        console.log("YEEHAW");
-
-        if (!activeAttractions[0]) {
-            activeRides.forEach(k => {
-                if (k.innerHTML.includes(`Thrill Ride`)) {
-                    $(k).hide();
-                }
-            });
-        }
-        if (!activeAttractions[1]) {
-            activeRides.forEach(k => {
-                if (k.innerHTML.includes(`Gentle Ride`)) {
-                    $(k).hide();
-                }
-            });
-        }
-        if (!activeAttractions[2]) {
-            activeRides.forEach(k => {
-                if (k.innerHTML.includes(`Character`)) {
-                    $(k).hide();
-                }
-            });
-        }
-        if (!activeAttractions[3]) {
-            activeRides.forEach(k => {
-                if (k.innerHTML.includes(`Show`)) {
-                    $(k).hide();
-                }
-            });
+        for (let i = 0; i < 4; i++) {
+            if (!activeAttractions[i]) {
+                activeRides.forEach(k => {
+                    if (k.innerHTML.includes(`${attractionTypeStrings[i]}`)) {
+                        $(k).hide();
+                    }
+                });
+            }
         }
     }
 }
