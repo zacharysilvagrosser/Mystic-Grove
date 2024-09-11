@@ -1,8 +1,8 @@
 function createAttraction(img, title, color, land, ages, type) {
     document.getElementById("attractions-container").innerHTML += `
     <div class="attraction row">
-        <img class="col-3" src="../imgs/${img}.jpeg">
-        <div class="col-8">
+        <img class="col-lg-3 col-12 mb-3" src="../imgs/${img}.jpeg">
+        <div class="col-lg-8 col-sm-11 col-10">
             <h1>${title}</h1>
             <h3 class="${color}">${land}</h3>
             <h5>${ages}</h5>

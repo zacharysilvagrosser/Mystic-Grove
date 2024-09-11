@@ -38,7 +38,6 @@
 }
 nav {
   width: 100%;
-  height: 6vh;
   display: flex;
   justify-content: center;
   position: fixed;
@@ -223,6 +222,9 @@ footer li {
   padding: 0 1rem;
   border-right: 1px solid white;
 }
+footer li:last-child {
+  border-right: 0px;
+}
 .fa {
   display: flex;
   align-items: center;
@@ -252,26 +254,40 @@ footer li {
 #attractions-header {
   width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+}
+#attractions-header h1 {
+  font-size: calc(1rem + 3vmin);
 }
 #attraction-land-sorter {
-  width: 70%;
   height: 40px;
-  font-size: 1.3rem;
+  font-size: calc(.5rem + 1.5vmin);
 }
 .attraction-type-sorter {
   display: flex;
-  font-size: 1.3rem;
+  width: 100%;
+  font-size: calc(.6rem + 1.3vmin);
+}
+.attraction-type-sorter:first-child {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+.attraction-type-sorter:last-child {
+  margin-bottom: 4rem;
 }
 .attraction-type-sorter button {
   height: 100px;
+  margin: 0 .2rem;
   background-color: white;
   border: 2px solid var(--future-color);
   border-radius: 10px;
 }
 .attraction-type-sorter button:hover {
   border-color: rgb(161, 171, 194);
+}
+#attractions-container {
+  width: 75%;
 }
 .attraction {
   display: flex;
@@ -280,10 +296,6 @@ footer li {
   border-bottom: 1px solid black;
   cursor: pointer;
 }
-/*.attraction-type-sorter:last-child button {
-  background-color: var(--future-color);
-  color: white;
-}*/
 @media only screen and (max-width: 767px) {
   .hamburger-menu {
     display: block;
@@ -330,6 +342,13 @@ footer li {
     font-size: 26px;
     width: 49px;
     margin: .5rem;
+  }
+  .attraction-type-sorter button {
+    height: 4rem;
+    font-size: .9rem;
+  }
+  #attractions-container {
+    width: 90%;
   }
 }
 @media only screen and (max-width: 575px) {
