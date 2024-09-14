@@ -1,7 +1,7 @@
 function createAttraction(title, land, color, img, ages, type) {
     document.getElementById("attractions-container").innerHTML += `
-    <div class="attraction">
-        <a href="../pages/pages/attraction-descriptions/${img}.html" style="color: black" class="row">
+    <a href="../pages/attraction-descriptions/${img}.html" style="color: black" class="row">
+        <div class="attraction">
             <img class="col-lg-3 col-12 mb-3" src="../imgs/${img}.jpeg">
             <div class="col-lg-8 col-sm-11 col-10">
                 <h1 class="attraction-title">${title}</h1>
@@ -9,11 +9,11 @@ function createAttraction(title, land, color, img, ages, type) {
                 <h5>${ages}</h5>
                 <p>${type}</p>
             </div>
-            <div class="col-1" style="display: flex">
+            <div class="col-1">
                 <i class="fa fa-chevron-right"></i>
             </div>
-        </a>
-    </div>`
+        </div>
+    </a>`
 }
 const attractionInformation = [
     {
