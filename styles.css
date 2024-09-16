@@ -312,16 +312,20 @@ footer li:last-child {
   cursor: pointer;
 }
 /* TICKETS PAGE */
+#tickets-header h1 {
+  font-size: 8vw;
+  font-weight: 800;
+}
+#tickets-header img {
+ width: 100%;
+}
 .ticket-box {
-  width: 50%;
-  display: flex;
-  align-items: center;
   margin-top: 3rem;
   background-color: var(--text-box-color);
-  padding: 3rem 0 3rem 6rem;
+  padding: 2rem 0rem 2rem 2rem;
 }
 .ticket-box button {
-  width: 53%;
+  width: 10rem;
   margin-top: .5rem;
   padding: .5rem;
   border-radius: 30px;
@@ -329,6 +333,12 @@ footer li:last-child {
   background-color: var(--future-color);
   color: white;
   transition: .4s;
+}
+.ticket-box div:last-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .ticket-box button:hover {
   border-color: rgb(0, 24, 44);
@@ -341,6 +351,7 @@ footer li:last-child {
   padding-top: 2rem;
   margin-top: 6rem;
   border-top: 1px dotted black;
+  font-size: .9rem;
 }
 @media only screen and (max-width: 767px) {
   .hamburger-menu {
@@ -398,6 +409,12 @@ footer li:last-child {
   }
   #attractions-page-container {
     padding-top: 1.5rem;
+  }
+  #tickets-footer {
+    width: 90%;
+    padding-top: 2rem;
+    margin-top: 6rem;
+    font-size: .75rem;
   }
 }
 @media only screen and (max-width: 575px) {
