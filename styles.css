@@ -312,6 +312,9 @@ footer li:last-child {
   cursor: pointer;
 }
 /* TICKETS PAGE */
+#tickets-header {
+  height: auto;
+}
 #tickets-header h1 {
   font-size: 8vw;
   font-weight: 800;
@@ -354,8 +357,31 @@ footer li:last-child {
   font-size: .9rem;
 }
 /* SHOPPING PAGE */
-#accessories-container img {
+#shop-container img {
   cursor: pointer;
+  width: 100%;
+  height: auto;
+}
+#shop-header {
+  height: auto;
+}
+#shop-header h1 {
+  font-size: 8vw;
+  font-weight: 750;
+}
+#shop-header img {
+  width: 100%;
+}
+.shop-h1 {
+  margin-top: 6rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: calc(1rem + 4vmin);
+}
+#shop-top-h1 {
+  margin-top: 8rem;
+  margin-bottom: 2rem;
+  font-size: calc(1rem + 4vmin);
 }
 .slick-backpacks {
   width: 65%;
@@ -363,20 +389,18 @@ footer li:last-child {
 .slick-backpacks h2 {
   position: absolute;
   margin-left: 6rem;
+  font-size: calc(.2rem + 3vmin);
   font-weight: 700;
   color: white;
 }
 .slick-backpacks h4 {
   position: absolute;
   margin-left: 6rem;
+  font-size: calc(.2rem + 2.5vmin);
   font-weight: 700;
   margin-top: 5rem;
   color: white;
   text-decoration: underline;
-}
-.slick-backpacks img {
-  width: 100%;
-  height: auto;
 }
 .fa-arrow-left, .fa-arrow-right {
   top: 50%;
@@ -390,16 +414,17 @@ footer li:last-child {
   left: 2%;
 }
 .fa-arrow-right {
-  left: 95%;
+  right: 2%;
 }
 .fa-arrow-right:hover, .fa-arrow-left:hover {
   opacity: 1;
   transition: .3s;
 }
-#accessories h1 {
-  text-align: center;
-  margin-top: 5rem;
-  margin-bottom: 2rem;
+#sweater-container h2, #memorabilia h2, #coming-soon h3 {
+  margin-top: 1rem;
+  margin-bottom: 2.5rem;
+  font-size: calc(1rem + 1.5vmin);
+  font-weight: 600;
 }
 .accessories-img {
   display: flex;
@@ -407,14 +432,21 @@ footer li:last-child {
   justify-content: center;
 }
 .accessories-img img {
-  width: 100%;
-  mask-image: linear-gradient(180deg, #000 75%, transparent);
+  mask-image: linear-gradient(180deg, #000 65%, transparent);
 }
 .accessories-img p {
-  font-size: 1.7rem;
+  font-size: calc(.5rem + 2.4vmin);
   position: absolute;
   font-weight: 600;
   color: black;
+  text-align: center;
+}
+#accessories-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+.narrow {
+  width: 95%;
   text-align: center;
 }
 @media only screen and (max-width: 767px) {
@@ -480,6 +512,26 @@ footer li:last-child {
     margin-top: 6rem;
     font-size: .75rem;
   }
+  #shop-top-h1 {
+    margin-top: 2rem;
+  }
+  .slick-backpacks {
+    width: 100%;
+  }
+  .slick-backpacks h2 {
+    margin-left: 3rem;
+    font-weight: 650;
+  }
+  .slick-backpacks h4 {
+    margin-left: 3rem;
+    font-weight: 650;
+  }
+  .fa-arrow-left {
+    visibility: collapse;
+  }
+  .fa-arrow-right {
+    visibility: collapse;
+  }
 }
 @media only screen and (max-width: 575px) {
   .container-fluid {
@@ -509,5 +561,8 @@ footer li:last-child {
   }
   footer ul li {
     font-size: .6rem;
+  }
+  .slick-backpacks h4 {
+    margin-top: 3.5rem;
   }
 }
