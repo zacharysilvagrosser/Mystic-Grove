@@ -46,7 +46,7 @@ const attractionInformation = [
         title: "Captain Brown Beard",
         land: "Pirate Island",
         color: "pirate-island",
-        img: "aqua-world",
+        img: "captain-brown-beard",
         ages: "Kids",
         type: "Character"
     },
@@ -384,7 +384,7 @@ const attractionInformation = [
         color: "wild-west",
         img: "western-expedition",
         ages: "All Ages",
-        type: "Gentle Ride"
+        type: "Thrill Ride"
     },
     {
         title: "Western Whirl",

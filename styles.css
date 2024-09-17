@@ -111,7 +111,7 @@ video {
   text-align: center;
   font-size: 1.8rem;
   list-style: none;
-  background-color: var(--text-box-color);
+  background-color: aliceblue;
   bottom: -1rem;
   z-index: 2;
 }
@@ -120,7 +120,7 @@ video {
   height: 50%;
 }
 #video-footer li:hover {
-  background-color: var(--text-box-hover-color);
+  background-color: rgb(225, 233, 240);
   cursor: pointer;
 }
 #tagline {
@@ -324,6 +324,12 @@ footer li:last-child {
   background-color: var(--text-box-color);
   padding: 2rem 0rem 2rem 2rem;
 }
+.ticket-box div:last-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .ticket-box button {
   width: 10rem;
   margin-top: .5rem;
@@ -333,12 +339,6 @@ footer li:last-child {
   background-color: var(--future-color);
   color: white;
   transition: .4s;
-}
-.ticket-box div:last-child {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 .ticket-box button:hover {
   border-color: rgb(0, 24, 44);
@@ -352,6 +352,70 @@ footer li:last-child {
   margin-top: 6rem;
   border-top: 1px dotted black;
   font-size: .9rem;
+}
+/* SHOPPING PAGE */
+#accessories-container img {
+  cursor: pointer;
+}
+.slick-backpacks {
+  width: 65%;
+}
+.slick-backpacks h2 {
+  position: absolute;
+  margin-left: 6rem;
+  font-weight: 700;
+  color: white;
+}
+.slick-backpacks h4 {
+  position: absolute;
+  margin-left: 6rem;
+  font-weight: 700;
+  margin-top: 5rem;
+  color: white;
+  text-decoration: underline;
+}
+.slick-backpacks img {
+  width: 100%;
+  height: auto;
+}
+.fa-arrow-left, .fa-arrow-right {
+  top: 50%;
+  position: absolute;
+  color: rgb(230, 230, 230);
+  opacity: .5;
+  transition: .3s;
+  z-index: 2;
+}
+.fa-arrow-left {
+  left: 2%;
+}
+.fa-arrow-right {
+  left: 95%;
+}
+.fa-arrow-right:hover, .fa-arrow-left:hover {
+  opacity: 1;
+  transition: .3s;
+}
+#accessories h1 {
+  text-align: center;
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+}
+.accessories-img {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.accessories-img img {
+  width: 100%;
+  mask-image: linear-gradient(180deg, #000 75%, transparent);
+}
+.accessories-img p {
+  font-size: 1.7rem;
+  position: absolute;
+  font-weight: 600;
+  color: black;
+  text-align: center;
 }
 @media only screen and (max-width: 767px) {
   .hamburger-menu {
@@ -411,7 +475,7 @@ footer li:last-child {
     padding-top: 1.5rem;
   }
   #tickets-footer {
-    width: 90%;
+    width: 80%;
     padding-top: 2rem;
     margin-top: 6rem;
     font-size: .75rem;
@@ -442,5 +506,8 @@ footer li:last-child {
   }
   .text-square p {
     font-size: 1rem;
+  }
+  footer ul li {
+    font-size: .6rem;
   }
 }
