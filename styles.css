@@ -357,28 +357,28 @@ footer li:last-child {
   font-size: .9rem;
 }
 /* SHOPPING PAGE */
-#shop-container img {
+#shopping-container img {
   cursor: pointer;
   width: 100%;
   height: auto;
 }
-#shop-header {
+#shopping-header {
   height: auto;
 }
-#shop-header h1 {
+#shopping-header h1 {
   font-size: 8vw;
   font-weight: 750;
 }
-#shop-header img {
+#shopping-header img {
   width: 100%;
 }
-.shop-h1 {
+.shopping-h1 {
   margin-top: 6rem;
   margin-bottom: 2rem;
   text-align: center;
   font-size: calc(1rem + 4vmin);
 }
-#shop-top-h1 {
+#shopping-top-h1 {
   margin-top: 8rem;
   margin-bottom: 2rem;
   font-size: calc(1rem + 4vmin);
@@ -449,6 +449,33 @@ footer li:last-child {
   width: 95%;
   text-align: center;
 }
+/* SHOP PAGE */
+#shop-container h1:first-child {
+  margin-top: 6rem;
+  margin-bottom: 1rem;
+}
+#shop-container h1 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+#shop-container img {
+  cursor: pointer;
+  width: 100%;
+  height: auto;
+}
+#shop-header {
+  height: auto;
+}
+#shop-header h1 {
+  font-size: 8vw;
+  font-weight: 750;
+}
+.slick-forest {
+  width: 95%;
+}
+.slick-forest {
+  padding: 1rem;
+}
 @media only screen and (max-width: 767px) {
   .hamburger-menu {
     display: block;
@@ -512,7 +539,7 @@ footer li:last-child {
     margin-top: 6rem;
     font-size: .75rem;
   }
-  #shop-top-h1 {
+  #shopping-top-h1 {
     margin-top: 2rem;
   }
   .slick-backpacks {
