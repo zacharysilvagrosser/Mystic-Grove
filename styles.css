@@ -50,21 +50,11 @@ nav {
   background-color: var(--future-color);
   z-index: 3;
 }
-nav ul {
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  text-align: center;
-  list-style: none;
-}
-nav li {
-  width: 20%;
-  padding: 1.4rem;
-}
-nav li:hover {
-  background-color: white;
+nav span {
+  position: absolute;
+  right: 2%;
   cursor: pointer;
+  color: white;
 }
 video {
   width: 100%;
@@ -456,7 +446,7 @@ footer li:last-child {
   flex-direction: column;
   align-items: center;
   position: fixed;
-  right: 0;
+  left: 0;
   display: none;
   background-color: #f3f3f3;
   overflow-y: scroll;
@@ -468,11 +458,27 @@ footer li:last-child {
   text-align: center;
   padding-bottom: 1rem;
 }
+#exit-cart-button {
+  font-size: 1.5rem;
+  position: absolute;
+  top: .5%;
+  right: 1.5%;
+  cursor: pointer;
+  padding: 10px;
+  opacity: .6;
+  z-index: 3;
+}
+#exit-cart-button:hover {
+  opacity: 1;
+}
+#cart-items {
+  width: 95%;
+}
 .cart-item {
+  width: 95%;
   display: flex;
   margin-top: 1rem;
   padding-bottom: 1rem;
-  width: 95%;
   border-bottom: 1px dotted black;
 }
 .cart-item p:first-child {
@@ -492,25 +498,39 @@ footer li:last-child {
   cursor: pointer;
   position: absolute;
   right: 4%;
-  margin-top: 3rem;
+  margin-top: 2.4rem;
   padding: 10px;
   display: flex;
   justify-content: center;
-  transform: translate(0%, -50%);
 }
 #shop-container {
   background-color: #ebebeb;
 }
 #shop-container img {
-  cursor: pointer;
   width: 100%;
   height: auto;
+}
+.shop-item {
+  cursor: pointer;
 }
 .slick-shop {
   width: 95%;
 }
 .slick-shop {
   padding: 1rem;
+}
+.shop-arrow-left {
+  top: 35%;
+  opacity: .6;
+  cursor: pointer;
+}
+.shop-arrow-right {
+  top: 35%;
+  opacity: .6;
+  cursor: pointer;
+}
+.fa-shopping-cart {
+  cursor: pointer;
 }
 .dim {
   filter: brightness(40%);
