@@ -375,6 +375,7 @@ footer li:last-child {
 }
 .slick-backpacks {
   width: 65%;
+  cursor: pointer;
 }
 .slick-backpacks h2 {
   position: absolute;

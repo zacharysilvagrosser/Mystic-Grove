@@ -1,3 +1,5 @@
+// BUG: Reloading shop page then adding new item to cart cuases quanities to go blank
+
 $('.slick-shop').slick({
     slidesToShow: 5,
     slidesToScroll: 5,
@@ -27,6 +29,28 @@ $('.slick-shop').slick({
       },
     ],
 });
+// RELOAD CART ITEMS
+const cartItemImgss = JSON.parse(localStorage.getItem("cartItemImgs"));
+const cartItemNamess = JSON.parse(localStorage.getItem("cartItemNames"));
+const cartItemPricess = JSON.parse(localStorage.getItem("cartItemPrices"));
+const cartItemQuantitiess = JSON.parse(localStorage.getItem("cartItemQuantities"));
+if (cartItemImgss !== null) {
+  for (let i = 0; i < cartItemImgss.length; i++) {
+      document.getElementById("cart-items").innerHTML += `
+          <div class="cart-item row">
+              <img class="col-4" src=${cartItemImgss[i]}>
+              <div class="col-5">
+                  <p>${cartItemNamess[i]}</p>
+                  <label for="quantity">Quantity: </label>
+                  <input class="quantity" type="number" value="${cartItemQuantitiess[i]}" min="1" max="9">
+                  <span> at ${cartItemPricess[i]}</span>
+              </div>
+              <p class="col-2 cart-price">${(cartItemPricess[i] * cartItemQuantitiess[i]).toFixed(2)}</p>
+              <span class="close">X</span>
+          </div>`;
+  }
+}
+// ADD CART CLICK EVENTLISTENERS
 const cart = document.getElementById("cart");
 document.getElementById("exit-cart-button").addEventListener("click", () => {
   document.getElementById("shop-container").classList.remove("dim");
@@ -45,7 +69,7 @@ const shopItems = document.querySelectorAll(".shop-item");
 const itemImgs = document.querySelectorAll(".item-img");
 const itemNames = document.querySelectorAll(".item-name");
 const itemPrices = document.querySelectorAll(".item-price");
-let [cartItemImgs, cartItemNames, cartItemPrices] = [[], [], []];
+let [cartItemImgs, cartItemNames, cartItemPrices, cartItemQuantities] = [[], [], [], []];
 for (let i = 0; i < shopItems.length; i++) {
   shopItems[i].addEventListener("click", () => {
     // STORE VALUES IN ARRAY SO CART ITMES CAN PERSIST THROUGH PAGE CHANGES
@@ -54,6 +78,7 @@ for (let i = 0; i < shopItems.length; i++) {
     cartItemPrices.push(itemPrices[i].innerText);
     document.getElementById("shop-container").classList.add("dim");
     cart.style.display = "flex";
+    // CREATE CART ITEM
     document.getElementById("cart-items").innerHTML += `
       <div class="cart-item row">
         <img class="col-4" src=${cartItemImgs[cartItemImgs.length - 1]}>
@@ -75,12 +100,13 @@ for (let i = 0; i < shopItems.length; i++) {
         cartItems[j].remove();
       });
       // UPDATE PRICE OF ITEMS WHEN INCREASING QUANTITY
+      cartItemQuantities[j] = quantities[j].value;
       quantities[j].addEventListener("input", () => {
         cartPrice[j].innerText = `${(cartItemPrices[j] * quantities[j].value).toFixed(2)}`;
+        cartItemQuantities[j] = quantities[j].value;
       });
       // UPDATE QUANTITY SO IT DOESN'T RESET TO 1 WHEN ADDING NEW ITEM TO CART
       quantities[j].value = cartPrice[j].innerText / cartItemPrices[j];
-      console.log(cartItemPrices[j], cartPrice[j].innerText);
     }
   });
 }
@@ -89,7 +115,6 @@ $("a").click(function() {
   localStorage.setItem('cartItemImgs', JSON.stringify(cartItemImgs));
   localStorage.setItem('cartItemNames', JSON.stringify(cartItemNames));
   localStorage.setItem('cartItemPrices', JSON.stringify(cartItemPrices));
-  //console.log(JSON.parse((localStorage.getItem('cartItemImgs'))));
-  //console.log(JSON.parse((localStorage.getItem('cartItemNames'))));
-  //console.log(JSON.parse((localStorage.getItem('cartItemPrices'))));
+  localStorage.setItem('cartItemQuantities', JSON.stringify(cartItemQuantities));
 });
+localStorage.clear();

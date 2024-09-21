@@ -613,26 +613,26 @@ function changeActiveAttractionButton(trigger) {
     updateActiveRides();
 }
 $("#thrill-rides-button").click(function() {
-    changeActiveAttractionButton("Thrill Rides", true);
+    changeActiveAttractionButton("Thrill Rides");
 });
 $("#gentle-rides-button").click(function() {
-    changeActiveAttractionButton("Gentle Rides", true);
+    changeActiveAttractionButton("Gentle Rides");
 });
 $("#characters-button").click(function() {
-    changeActiveAttractionButton("Characters", true);
+    changeActiveAttractionButton("Characters");
 });
 $("#shows-button").click(function() {
-    changeActiveAttractionButton("Shows", true);
+    changeActiveAttractionButton("Shows");
 });
 $("#kids-button").click(function() {
-    changeActiveAttractionButton("Kids", false);
+    changeActiveAttractionButton("Kids");
 });
 $("#teens-button").click(function() {
-    changeActiveAttractionButton("Teens", false);
+    changeActiveAttractionButton("Teens");
 });
 $("#adults-button").click(function() {
-    changeActiveAttractionButton("Adults", false);
+    changeActiveAttractionButton("Adults");
 });
 $("#all-ages-button").click(function() {
-    changeActiveAttractionButton("All Ages", false);
+    changeActiveAttractionButton("All Ages");
 });
