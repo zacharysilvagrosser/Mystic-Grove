@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fantasy Grove</title>
+    <title>Mystic Grove</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
@@ -13,16 +13,26 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
   <body>
-    <div class="hamburger-menu"></div>
-    <div class="hamburger-menu"></div>
-    <div class="hamburger-menu"></div>
-    <nav class="nav nav-tabs justify-content-center">
-        <a href="../index.html" class="nav-item nav-link" style="font-size: 1.5rem"><em>Mystic Grove</em></a>
-        <a href="attractions.html" class="nav-item nav-link">Attractions</a>
-        <a href="tickets.html" class="nav-item nav-link">Tickets</a>
-        <a href="shopping.html" class="nav-item nav-link">Shopping</a>
-        <a href="dining.html" class="nav-item nav-link active">Dining</a>
+    <div id="hamburger-group">
+      <div class="hamburger-menu"></div>
+      <div class="hamburger-menu"></div>
+      <div class="hamburger-menu"></div>
+    </div>
+    <div id="mobile-menu">
+        <a href="index.html" class="nav-item nav-link"><em>Mystic Grove</em></a>
+        <a href="attractions.html" class="nav-item nav-link"><i class="fa-solid fa-shuttle-space"></i> Attractions</a>
+        <a href="tickets.html" class="nav-item nav-link"><i class="fa-solid fa-ticket"></i> Tickets</a>
+        <a href="shopping.html" class="nav-item nav-link"><i class="fa-solid fa-store"></i> Shopping</a>
+        <a href="dining.html" class="nav-item nav-link active"> <i class="fa-solid fa-utensils"></i> Dining</a>
         <span id="cart-button" class="nav-item nav-link"><i class="fas fa-shopping-cart pl-1"></i> My Cart</span>
+    </div>
+    <nav class="nav nav-tabs justify-content-center">
+        <a href="index.html" class="nav-item nav-link top-nav" style="font-size: 1.5rem"><em>Mystic Grove</em></a>
+        <a href="attractions.html" class="nav-item nav-link top-nav"><i class="fa-solid fa-shuttle-space"></i> Attractions</a>
+        <a href="tickets.html" class="nav-item nav-link top-nav"><i class="fa-solid fa-ticket"></i> Tickets</a>
+        <a href="shopping.html" class="nav-item nav-link top-nav"><i class="fa-solid fa-store"></i> Shopping</a>
+        <a href="dining.html" class="nav-item nav-link top-nav active"> <i class="fa-solid fa-utensils"></i> Dining</a>
+        <span id="cart-button" class="nav-item nav-link top-nav"><i class="fas fa-shopping-cart pl-1"></i> My Cart</span>
     </nav>
     <div id="cart">
       <h1 class="mt-2">My Cart</h1>
@@ -63,7 +73,7 @@
     </div>
     <footer>
       <div id="footer-header">
-          <h4>Park Hours</h4>
+          <h4 style="font-size: 1.4rem;"><strong>Park Hours</strong></h4>
           <span>Weekdays: 10:00am-10:00pm</span>
           <span>Weekends: 8:30am-11:30pm</span>
       </div>
@@ -81,7 +91,7 @@
           <li>Legal Notices</li>
       </ul>
       <p>© Mystic Grove, All Rights Reserved</p>
-  </footer>
+    </footer>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();

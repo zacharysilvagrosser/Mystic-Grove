@@ -5,24 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Fantasy Grove</title>
+    <title>Mystic Grove</title>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
   <body>
-    <div class="hamburger-menu"></div>
-    <div class="hamburger-menu"></div>
-    <div class="hamburger-menu"></div>
-    <nav class="nav nav-tabs justify-content-center">
-        <a href="#" class="nav-item nav-link active" style="font-size: 1.5rem"><em>Mystic Grove</em></a>
-        <a href="pages/attractions.html" class="nav-item nav-link">Attractions</a>
-        <a href="pages/tickets.html" class="nav-item nav-link">Tickets</a>
-        <a href="pages/shopping.html" class="nav-item nav-link">Shopping</a>
-        <a href="pages/dining.html" class="nav-item nav-link">Dining</a>
+    <div id="hamburger-group">
+        <div class="hamburger-menu"></div>
+        <div class="hamburger-menu"></div>
+        <div class="hamburger-menu"></div>
+    </div>
+    <div id="mobile-menu">
+        <a class="nav-item nav-link active"><em>Mystic Grove</em></a>
+        <a href="attractions.html" class="nav-item nav-link"><i class="fa-solid fa-shuttle-space"></i> Attractions</a>
+        <a href="tickets.html" class="nav-item nav-link"><i class="fa-solid fa-ticket"></i> Tickets</a>
+        <a href="shopping.html" class="nav-item nav-link"><i class="fa-solid fa-store"></i> Shopping</a>
+        <a href="dining.html" class="nav-item nav-link"> <i class="fa-solid fa-utensils"></i> Dining</a>
         <span id="cart-button" class="nav-item nav-link"><i class="fas fa-shopping-cart pl-1"></i> My Cart</span>
+    </div>
+    <nav class="nav nav-tabs justify-content-center">
+        <a class="nav-item nav-link top-nav active" style="font-size: 1.5rem"><em>Mystic Grove</em></a>
+        <a href="attractions.html" class="nav-item nav-link top-nav"><i class="fa-solid fa-shuttle-space"></i> Attractions</a>
+        <a href="tickets.html" class="nav-item nav-link top-nav"><i class="fa-solid fa-ticket"></i> Tickets</a>
+        <a href="shopping.html" class="nav-item nav-link top-nav"><i class="fa-solid fa-store"></i> Shopping</a>
+        <a href="dining.html" class="nav-item nav-link top-nav"> <i class="fa-solid fa-utensils"></i> Dining</a>
+        <span id="cart-button" class="nav-item nav-link top-nav"><i class="fas fa-shopping-cart pl-1"></i> My Cart</span>
     </nav>
     <div id="cart">
         <h1 class="mt-2">My Cart</h1>
@@ -139,7 +149,7 @@
                 <div class="col-xl-4 col-md-12 col-12 order-xl-1 order-md-2 order-1 text-square">
                     <p>Commemorate your visit with a uniquely themed souvenir.
                     <br><br>Explore our immersive shopping districts like Pirates Cove and The Trading Post to find the best deals on our newest merchandise.</p>
-                    <a href="pages/ahopping.html"><button class="ticket-button">Shop Now</button></a>
+                    <a href="pages/shopping.html"><button class="ticket-button">Shop Now</button></a>
                 </div>
             </div>
         </div>
@@ -153,7 +163,7 @@
     </div>
     <footer>
         <div id="footer-header">
-            <h4>Park Hours</h4>
+            <h4 style="font-size: 1.4rem;"><strong>Park Hours</strong></h4>
             <span>Weekdays: 10:00am-10:00pm</span>
             <span>Weekends: 8:30am-11:30pm</span>
         </div>

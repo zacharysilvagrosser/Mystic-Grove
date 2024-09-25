@@ -1,5 +1,12 @@
 // BUG: Reloading shop page then adding new item to cart cuases quanities to go blank
-
+const moblieMenu = document.getElementById("mobile-menu");
+document.getElementById("hamburger-group").addEventListener("click", () => {
+    if (moblieMenu.style.display === "none" || moblieMenu.style.display === "") {
+        moblieMenu.style.display = "flex";
+    } else {
+        moblieMenu.style.display = "none";
+    }
+});
 $('.slick-shop').slick({
     slidesToShow: 5,
     slidesToScroll: 5,
@@ -30,28 +37,28 @@ $('.slick-shop').slick({
     ],
 });
 // RELOAD CART ITEMS
-const cartItemImgss = JSON.parse(localStorage.getItem("cartItemImgs"));
-const cartItemNamess = JSON.parse(localStorage.getItem("cartItemNames"));
-const cartItemPricess = JSON.parse(localStorage.getItem("cartItemPrices"));
-const cartItemQuantitiess = JSON.parse(localStorage.getItem("cartItemQuantities"));
-if (cartItemImgss !== null) {
-  for (let i = 0; i < cartItemImgss.length; i++) {
+const getCartItemImgs = JSON.parse(localStorage.getItem("cartItemImgs"));
+const getCartItemNamess = JSON.parse(localStorage.getItem("cartItemNames"));
+const getCartItemPricess = JSON.parse(localStorage.getItem("cartItemPrices"));
+const getCartItemQuantitiess = JSON.parse(localStorage.getItem("cartItemQuantities"));
+if (getCartItemImgs !== null) {
+  for (let i = 0; i < getCartItemImgs.length; i++) {
       document.getElementById("cart-items").innerHTML += `
           <div class="cart-item row">
-              <img class="col-4" src=${cartItemImgss[i]}>
+              <img class="col-4" src=${getCartItemImgs[i]}>
               <div class="col-5">
-                  <p>${cartItemNamess[i]}</p>
+                  <p>${getCartItemNamess[i]}</p>
                   <label for="quantity">Quantity: </label>
-                  <input class="quantity" type="number" value="${cartItemQuantitiess[i]}" min="1" max="9">
-                  <span> at ${cartItemPricess[i]}</span>
+                  <input class="quantity" type="number" value="${getCartItemQuantitiess[i]}" min="1" max="9">
+                  <span> at $${getCartItemPricess[i]}</span>
               </div>
-              <p class="col-2 cart-price">${(cartItemPricess[i] * cartItemQuantitiess[i]).toFixed(2)}</p>
+              <p class="col-2 cart-price">${(getCartItemPricess[i] * getCartItemQuantitiess[i]).toFixed(2)}</p>
               <span class="close">X</span>
           </div>`;
   }
 }
 // ADD CART CLICK EVENTLISTENERS
-const cart = document.getElementById("cart");
+let cart = document.getElementById("cart");
 document.getElementById("exit-cart-button").addEventListener("click", () => {
   document.getElementById("shop-container").classList.remove("dim");
   cart.style.display = "none";
@@ -86,7 +93,7 @@ for (let i = 0; i < shopItems.length; i++) {
           <p>${cartItemNames[cartItemNames.length - 1]}</p>
           <label for="quantity">Quantity: </label>
           <input class="quantity" type="number" value="1" min="1" max="9">
-          <span> at ${cartItemPrices[cartItemPrices.length - 1]}</span>
+          <span> at $${cartItemPrices[cartItemPrices.length - 1]}</span>
         </div>
         <p class="col-2 cart-price">${cartItemPrices[cartItemPrices.length - 1]}</p>
         <span class="close">X</span>
@@ -117,4 +124,3 @@ $("a").click(function() {
   localStorage.setItem('cartItemPrices', JSON.stringify(cartItemPrices));
   localStorage.setItem('cartItemQuantities', JSON.stringify(cartItemQuantities));
 });
-localStorage.clear();
