@@ -21,13 +21,6 @@ $('.slick-shop').slick({
         },
       },
       {
-        breakpoint: 1000,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-        },
-      },
-      {
         breakpoint: 800,
         settings: {
           slidesToShow: 2,
@@ -45,15 +38,15 @@ if (getCartItemImgs !== null) {
   for (let i = 0; i < getCartItemImgs.length; i++) {
       document.getElementById("cart-items").innerHTML += `
           <div class="cart-item row">
-              <img class="col-4" src=${getCartItemImgs[i]}>
-              <div class="col-5">
+              <img class="col-sm-4 col-12" src=${getCartItemImgs[i]}>
+              <div class="col-sm-5 col-12">
                   <p>${getCartItemNamess[i]}</p>
                   <label for="quantity">Quantity: </label>
                   <input class="quantity" type="number" value="${getCartItemQuantitiess[i]}" min="1" max="9">
                   <span> at $${getCartItemPricess[i]}</span>
               </div>
-              <p class="col-2 cart-price">${(getCartItemPricess[i] * getCartItemQuantitiess[i]).toFixed(2)}</p>
-              <span class="close">X</span>
+              <p class="col-sm-2 col-10 cart-price">${(getCartItemPricess[i] * getCartItemQuantitiess[i]).toFixed(2)}</p>
+              <div class="close">X</div>
           </div>`;
   }
 }
@@ -88,15 +81,15 @@ for (let i = 0; i < shopItems.length; i++) {
     // CREATE CART ITEM
     document.getElementById("cart-items").innerHTML += `
       <div class="cart-item row">
-        <img class="col-4" src=${cartItemImgs[cartItemImgs.length - 1]}>
-        <div class="col-5">
+        <img class="col-sm-4 col-12" src=${cartItemImgs[cartItemImgs.length - 1]}>
+        <div class="col-sm-5 col-12">
           <p>${cartItemNames[cartItemNames.length - 1]}</p>
           <label for="quantity">Quantity: </label>
           <input class="quantity" type="number" value="1" min="1" max="9">
           <span> at $${cartItemPrices[cartItemPrices.length - 1]}</span>
         </div>
-        <p class="col-2 cart-price">${cartItemPrices[cartItemPrices.length - 1]}</p>
-        <span class="close">X</span>
+        <p class="col-sm-2 col-10 cart-price">${cartItemPrices[cartItemPrices.length - 1]}</p>
+        <div class="close">X</div>
       </div>`;
     const closeButtons = document.querySelectorAll(".close");
     const cartItems = document.querySelectorAll(".cart-item");

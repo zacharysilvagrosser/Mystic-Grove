@@ -2,7 +2,7 @@ function createDining(title, land, color, img, type, money) {
     document.getElementById("attractions-container").innerHTML += `
     <a href="../pages/attraction-descriptions/${img}.html" style="color: black">
         <div class="attraction row">
-            <img class="col-lg-3 col-12" src="../imgs/${img}.jpg">
+            <img class="col-lg-3 col-12" src="../imgs/${img}.jpg" alt="dining-picture" loading="lazy">
             <div class="col-lg-8 col-sm-11 col-10">
                 <h1 class="attraction-title mt-lg-0 mt-3">${title}</h1>
                 <h3 class="${color}">${land}</h3>

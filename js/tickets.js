@@ -11,14 +11,14 @@ for (let i = 0; i < ticketButtons.length; i++) {
         // CREATE CART ITEM
         document.getElementById("cart-items").innerHTML += `
         <div class="cart-ticket row">
-            <div class="col-md-9 col-12">
+            <div class="col-sm-9 col-12">
                 <p>${cartTicketNames[cartTicketNames.length - 1]}</p>
                 <label for="quantity">Quantity: </label>
                 <input class="ticket-quantity" type="number" value="1" min="1" max="6">
                 <span> at $${cartTicketPrices[cartTicketPrices.length - 1]}</span>
             </div>
-            <p class="col-md-2 col-10 cart-ticket-price">${cartTicketPrices[cartTicketPrices.length - 1]}</p>
-            <span class="col-md-1 col-2 close-ticket">X</span>
+            <p class="col-sm-2 col-10 cart-ticket-price">${cartTicketPrices[cartTicketPrices.length - 1]}</p>
+            <div class="close">X</div>
         </div>`;
         const closeTicket = document.querySelectorAll(".close-ticket");
         ticketQuantities = document.querySelectorAll(".ticket-quantity");

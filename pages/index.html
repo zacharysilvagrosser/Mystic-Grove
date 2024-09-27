@@ -19,25 +19,26 @@
         <div class="hamburger-menu"></div>
     </div>
     <div id="mobile-menu">
-        <a class="nav-item nav-link active"><em>Mystic Grove</em></a>
+        <a href="index.html" class="nav-item nav-link active"><em>Mystic Grove</em></a>
+        <a href="shopping.html" class="nav-item nav-link"><i class="fa-solid fa-store"></i> Shopping</a>
         <a href="attractions.html" class="nav-item nav-link"><i class="fa-solid fa-shuttle-space"></i> Attractions</a>
         <a href="tickets.html" class="nav-item nav-link"><i class="fa-solid fa-ticket"></i> Tickets</a>
-        <a href="shopping.html" class="nav-item nav-link"><i class="fa-solid fa-store"></i> Shopping</a>
         <a href="dining.html" class="nav-item nav-link"> <i class="fa-solid fa-utensils"></i> Dining</a>
-        <span id="cart-button" class="nav-item nav-link"><i class="fas fa-shopping-cart pl-1"></i> My Cart</span>
+        <span class="cart-button" class="nav-item nav-link">&nbsp<i class="fas fa-shopping-cart pl-1"></i>&nbspMy Cart</span>
     </div>
     <nav class="nav nav-tabs justify-content-center">
-        <a class="nav-item nav-link top-nav active" style="font-size: 1.5rem"><em>Mystic Grove</em></a>
+        <a href="index.html" class="nav-item nav-link top-nav active" style="font-size: 1.5rem"><em>Mystic Grove</em></a>
+        <a href="shopping.html" class="nav-item nav-link top-nav"><i class="fa-solid fa-store"></i> Shopping</a>
         <a href="attractions.html" class="nav-item nav-link top-nav"><i class="fa-solid fa-shuttle-space"></i> Attractions</a>
         <a href="tickets.html" class="nav-item nav-link top-nav"><i class="fa-solid fa-ticket"></i> Tickets</a>
-        <a href="shopping.html" class="nav-item nav-link top-nav"><i class="fa-solid fa-store"></i> Shopping</a>
         <a href="dining.html" class="nav-item nav-link top-nav"> <i class="fa-solid fa-utensils"></i> Dining</a>
-        <span id="cart-button" class="nav-item nav-link top-nav"><i class="fas fa-shopping-cart pl-1"></i> My Cart</span>
+        <span class="cart-button" class="nav-item nav-link top-nav"><i class="fas fa-shopping-cart pl-1"></i>&nbspMy Cart</span>
     </nav>
     <div id="cart">
         <h1 class="mt-2">My Cart</h1>
         <span id="exit-cart-button">X</span>
         <div id="cart-items"></div>
+        <button class="checkout-button">Checkout</button>
     </div>
     <div class="media-overlay">
         <h1><strong><em>Find your happy place</em></strong></h1>
@@ -51,20 +52,20 @@
             <ul id="video-footer">
                 <a href="#footer-header"><li>Park Hours</li></a>
                 <a href="#park-map"><li>Park Map</li></a>
-                <a href="pages/tickets.html"><li>Buy Tickets</li></a>
+                <a href="tickets.html"><li>Buy Tickets</li></a>
             </ul>
         </div>
         <div class="container-fluid" id="tagline">
             <h1><strong>Let Your Imagination Run Wild</strong></h1>
         </div>
-        <img id="border-img" src="../imgs/fantasy-border.png" alt="fantasy themed border">
+        <img id="border-img" src="../imgs/fantasy-border.png" alt="fantasy themed border" loading="lazy">
         <div class="container-fluid">
             <h1>Discover Brand New Attractions</h1>
             <div class="row" data-aos="fade-in" data-aos-duration="1200">
                 <div class="col-xl-4 col-md-6 col-sm-12 attraction-div">
-                    <a href="pages/attractions.html">
+                    <a href="attractions.html">
                         <div>
-                            <img style="width: 100%" src="../imgs/moon-landing.jpeg" alt="rocket ship launching to the moon">
+                            <img style="width: 100%" src="../imgs/moon-landing.jpeg" alt="rocket ship launching to the moon" loading="lazy">
                         </div>
                         <div class="desc-div" style="background-color: rgb(1, 36, 66)">
                             <h2>Moon Landing</h2>
@@ -73,9 +74,9 @@
                     </a>
                 </div>
                 <div class="col-xl-4 col-md-6 col-sm-12 attraction-div">
-                    <a href="pages/attractions.html">
+                    <a href="attractions.html">
                         <div>
-                            <img style="width: 100%" src="../imgs/pirates-journey.jpeg" alt="pirate ship floating over waters at sunset">
+                            <img style="width: 100%" src="../imgs/pirates-journey.jpeg" alt="pirate ship floating over waters at sunset" loading="lazy">
                         </div>
                         <div class="desc-div" style="background-color: #3A160E">
                             <h2>Pirate's Journey</h2>
@@ -84,9 +85,9 @@
                     </a>
                 </div>
                 <div class="col-xl-4 col-md-6 col-sm-12 attraction-div">
-                    <a href="pages/attractions.html">
+                    <a href="attractions.html">
                         <div>
-                            <img style="width: 100%" src="../imgs/western-expedition.jpeg" alt="minecart coaster ride poster">
+                            <img style="width: 100%" src="../imgs/western-expedition.jpeg" alt="minecart coaster ride poster" loading="lazy">
                         </div>
                         <div class="desc-div" style="background-color: #924A36">
                             <h2>Western Expedition</h2>
@@ -99,28 +100,28 @@
         <div class="container-fluid">
             <h1>Find the Best Deals</h1>
             <div class="row" data-aos="fade-in" data-aos-duration="2000">
-                <img class="col-lg-6 col-12 order-lg-0 img-fluid" style="padding: 0" src="../imgs/kid-toy.jpeg" alt="kid holding stuffed animal with parents">                    
+                <img class="col-lg-6 col-12 order-lg-0 img-fluid p-0" src="../imgs/kid-toy.jpeg" alt="kid holding stuffed animal with parents" loading="lazy">                    
                 <div class="col-xl-4 col-12 order-lg-2 text-square">
                     <h3>Special Offers</h3>
                     <p>Stay at our resort for 2 days and save 25% on your second day. We'll also include a 25% discount on all food purchases if you stay for three days.</p>
-                    <a href="pages/tickets.html"><button class="ticket-button">Book Now</button></a>
+                    <a href="tickets.html"><button class="ticket-button">Book Now</button></a>
                 </div>
-                <img class="col-lg-6 col-12 order-lg-1 img-fluid" style="padding: 0" src="../imgs/kids-coaster.jpeg" alt="kids smiling on a roller coaster">
-                <img class="d-none d-xl-block col-xl-4 order-lg-3 img-fluid" style="padding: 0" src="../imgs/siblings.jpeg" alt="kids smiling on a roller coaster">
+                <img class="col-lg-6 col-12 order-lg-1 img-fluid p-0" src="../imgs/kids-coaster.jpeg" alt="kids smiling on a roller coaster" loading="lazy">
+                <img class="d-none d-xl-block col-xl-4 order-lg-3 img-fluid p-0" src="../imgs/siblings.jpeg" alt="kids smiling in front of a carousel" loading="lazy">
                 <div class="col-xl-4 col-12 order-lg-4 text-square">
                     <h3>Limited Time Deal</h3>
                     <p>Book your visit from now to November 7th and save 30% on your stay for parties of 4 of more guests.</p>
-                    <a href="pages/tickets.html"><button class="ticket-button">Book Now</button></a>
+                    <a href="tickets.html"><button class="ticket-button">Book Now</button></a>
                 </div>
             </div>
         </div>
         <div class="container-fluid">
             <h1>World Class Dining</h1>
             <div class="row" data-aos="fade-in" data-aos-duration="2000">
-                <a class="col-lg-6 col-12"  href="pages/dining.html">
+                <a class="col-lg-6 col-12"  href="dining.html">
                     <div class="attraction-div">
                         <div>
-                            <img style="width: 100%" src="../imgs/space-restaurant.jpeg" alt="a space themed restaurant">
+                            <img style="width: 100%" src="../imgs/space-restaurant.jpeg" alt="a space themed restaurant" loading="lazy">
                         </div>
                         <div class="desc-div" style="background-color: rgb(1, 36, 66)">
                             <h2>Neptune's Landing</h2>
@@ -128,10 +129,10 @@
                         </div>
                     </div>
                 </a>
-                <a class="col-lg-6 col-12"  href="pages/dining.html">
+                <a class="col-lg-6 col-12"  href="dining.html">
                     <div class="attraction-div">
                         <div>
-                            <img style="width: 100%" src="../imgs/forest-grill.jpeg" alt="a fairy forest themed restaurant">
+                            <img style="width: 100%" src="../imgs/forest-grill.jpeg" alt="a fairy forest themed restaurant" loading="lazy">
                         </div>
                         <div class="desc-div" style="background-color: #233a0e">
                             <h2>Forest Grill</h2>
@@ -143,18 +144,18 @@
         </div>
         <div class="container-fluid">
             <h1>Shop Till You Drop</h1>
-            <div class="row">
-                <img class="col-xl-4 col-md-6 col-12 order-xl-0 order-md-0 order-0 img-fluid" style="padding: 0; width: 100%" src="../imgs/pirate-shop.jpeg" alt="a fairy forest themed restaurant">
-                <img class="col-xl-4 col-md-6 col-12 order-xl-2 order-md-1 order-2 d-none d-md-block img-fluid" style="padding: 0; width: 100%" src="../imgs/western-shop.jpeg" alt="a fairy forest themed restaurant">
+            <div class="row" data-aos="fade-in" data-aos-duration="2000">
+                <img class="col-xl-4 col-md-6 col-12 order-xl-0 order-md-0 order-0 img-fluid p-0" src="../imgs/pirate-shop.jpeg" alt="a pirate themed market" loading="lazy">
+                <img class="col-xl-4 col-md-6 col-12 order-xl-2 order-md-1 order-2 d-none d-md-block img-fluid p-0" src="../imgs/western-shop.jpeg" alt="a western themed market" loading="lazy">
                 <div class="col-xl-4 col-md-12 col-12 order-xl-1 order-md-2 order-1 text-square">
                     <p>Commemorate your visit with a uniquely themed souvenir.
                     <br><br>Explore our immersive shopping districts like Pirates Cove and The Trading Post to find the best deals on our newest merchandise.</p>
-                    <a href="pages/shopping.html"><button class="ticket-button">Shop Now</button></a>
+                    <a href="shopping.html"><button class="ticket-button">Shop Now</button></a>
                 </div>
             </div>
         </div>
         <div class="container-fluid">
-            <img id="park-map" style="width: 100%;" src="../imgs/park-map.jpeg" alt="a fairy forest themed restaurant">
+            <img id="park-map" class="img-fluid" src="../imgs/park-map.jpeg" alt="Mystic Grove park map" loading="lazy">
         </div>
     </div>
     <div id="tickets-footer">
@@ -163,9 +164,11 @@
     </div>
     <footer>
         <div id="footer-header">
-            <h4 style="font-size: 1.4rem;"><strong>Park Hours</strong></h4>
-            <span>Weekdays: 10:00am-10:00pm</span>
-            <span>Weekends: 8:30am-11:30pm</span>
+            <h4><strong>Park Hours</strong></h4>
+            <div>
+                <span>Weekdays: 10:00am-10:00pm</span>
+                <span>Weekends: 08:30am-11:30pm</span>
+            </div>
         </div>
         <h4>Stay Connected</h4>
         <div>

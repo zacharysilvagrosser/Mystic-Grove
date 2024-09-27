@@ -10,12 +10,15 @@ let cart = document.getElementById("cart");
 document.getElementById("exit-cart-button").addEventListener("click", () => {
     cart.style.display = "none";
 });
-document.getElementById("cart-button").addEventListener("click", () => {
-    if (cart.style.display === "none" || cart.style.display === "") {
-        cart.style.display = "flex";
-    } else {
-        cart.style.display = "none";
-    }
+const cartButton = document.querySelectorAll(".cart-button")
+cartButton.forEach(i => {
+    i.addEventListener("click", () => {
+        if (cart.style.display === "none" || cart.style.display === "") {
+            cart.style.display = "flex";
+        } else {
+            cart.style.display = "none";
+        }
+    });
 });
 const cartItemImgs = JSON.parse(localStorage.getItem("cartItemImgs"));
 const cartItemNames = JSON.parse(localStorage.getItem("cartItemNames"));
@@ -28,15 +31,15 @@ console.log("LOADED CART ITEMS: ", getCartTicketNames);
 for (let i = 0; i < cartItemImgs.length; i++) {
     document.getElementById("cart-items").innerHTML += `
         <div class="cart-item row">
-            <img class="col-md-4 col-12" src=${cartItemImgs[i]}>
-            <div class="col-md-5 col-12">
-                <p class="pt-md-0 pt-3">${cartItemNames[i]}</p>
+            <img class="col-sm-4 col-12" src=${cartItemImgs[i]}>
+            <div class="col-sm-5 col-12">
+                <p class="pt-sm-0 pt-3">${cartItemNames[i]}</p>
                 <label for="quantity">Quantity: </label>
                 <input class="quantity" type="number" value="${cartItemQuantities[i]}" min="1" max="9">
                 <span> at $${cartItemPrices[i]}</span>
             </div>
-            <p class="col-md-2 col-10 cart-price">${(cartItemPrices[i] * cartItemQuantities[i]).toFixed(2)}</p>
-            <span class="col-md-1 col-2 close">X</span>
+            <p class="col-sm-2 col-10 cart-price">${(cartItemPrices[i] * cartItemQuantities[i]).toFixed(2)}</p>
+            <div class="close">X</div>
         </div>`;
 }
 for (let i = 0; i < getCartTicketNames.length; i++) {

@@ -20,95 +20,99 @@
     </div>
     <div id="mobile-menu">
         <a href="index.html" class="nav-item nav-link"><em>Mystic Grove</em></a>
+        <a href="shopping.html" class="nav-item nav-link"><i class="fa-solid fa-store"></i> Shopping</a>
         <a href="attractions.html" class="nav-item nav-link"><i class="fa-solid fa-shuttle-space"></i> Attractions</a>
         <a href="tickets.html" class="nav-item nav-link active"><i class="fa-solid fa-ticket"></i> Tickets</a>
-        <a href="shopping.html" class="nav-item nav-link"><i class="fa-solid fa-store"></i> Shopping</a>
         <a href="dining.html" class="nav-item nav-link"> <i class="fa-solid fa-utensils"></i> Dining</a>
-        <span id="cart-button" class="nav-item nav-link"><i class="fas fa-shopping-cart pl-1"></i> My Cart</span>
+        <span class="cart-button" class="nav-item nav-link">&nbsp<i class="fas fa-shopping-cart pl-1"></i>&nbspMy Cart</span>
     </div>
     <nav class="nav nav-tabs justify-content-center">
         <a href="index.html" class="nav-item nav-link top-nav" style="font-size: 1.5rem"><em>Mystic Grove</em></a>
+        <a href="shopping.html" class="nav-item nav-link top-nav"><i class="fa-solid fa-store"></i> Shopping</a>
         <a href="attractions.html" class="nav-item nav-link top-nav"><i class="fa-solid fa-shuttle-space"></i> Attractions</a>
         <a href="tickets.html" class="nav-item nav-link top-nav active"><i class="fa-solid fa-ticket"></i> Tickets</a>
-        <a href="shopping.html" class="nav-item nav-link top-nav"><i class="fa-solid fa-store"></i> Shopping</a>
         <a href="dining.html" class="nav-item nav-link top-nav"> <i class="fa-solid fa-utensils"></i> Dining</a>
-        <span id="cart-button" class="nav-item nav-link top-nav"><i class="fas fa-shopping-cart pl-1"></i> My Cart</span>
+        <span class="cart-button" class="nav-item nav-link top-nav"><i class="fas fa-shopping-cart pl-1"></i>&nbspMy Cart</span>
     </nav>
     <div id="cart">
         <h1 class="mt-2">My Cart</h1>
         <span id="exit-cart-button">X</span>
         <div id="cart-items"></div>
-        <a href="checkout.html"><button class="checkout-button">Checkout</button></a>
+        <button class="checkout-button">Checkout</button>
     </div>
-    <div class="media-overlay" id="tickets-header">
-        <h1>Mystic Grove Tickets</h1>
-        <img src="../imgs/tickets-header.jpeg">
-    </div>
-    <div id="tickets-container" class="container-center row" style="margin-top: 5rem;">
-        <h1>Special Offers</h1>
-        <div class="ticket-box col-lg-6 col-md-8 col-12 row">
-            <div class="col-lg-8 col-12">
-                <h3 class="ticket-title">2 Day Mystic Tickets</h3>
-                <ul>
-                    <li>Valid from September 13 through December 10, 2024. Does not include access to Hallowwood Haunting or Mystic Holiday special event</li>
-                    <li>Tickets must be used in the same one week period</li>
-                </ul>
-            </div>
-            <div class="col-lg-4 col-12">
-                <h3>$<span class="ticket-prices">49.00</span>/Day</h3>
-                <button class="ticket-button">Purchase</button>
-            </div>
+        <div class="container-center">
+        <div class="media-overlay" id="tickets-header">
+            <h1>Mystic Grove Tickets</h1>
+            <img src="../imgs/tickets-header.jpeg" alt="an amusement park background over a cloudy sky" loading="lazy">
         </div>
-        <div class="ticket-box col-lg-6 col-md-8 col-12 row">
-            <div class="col-lg-8 col-12">
-                <h3 class="ticket-title">1 Day Hallowwood Haunting Ticket</h3>
-                <ul>
-                    <li>Valid from September 13 through October 31, 2024. Includes day tickets to park.</li>
-                    <li>Hallowwood Haunting special event is from 7pm-11pm.</li>
-                </ul>
+        <div id="tickets-container" class="container-center row mt-5">
+            <h1>Special Offers</h1>
+            <div class="ticket-box col-lg-6 col-md-8 col-12 row">
+                <div class="col-lg-8 col-12">
+                    <h3 class="ticket-title">2 Day Mystic Tickets</h3>
+                    <ul>
+                        <li>Valid from September 13 through December 10, 2024. Does not include access to Hallowwood Haunting or Mystic Holiday special event</li>
+                        <li>Tickets must be used in the same one week period</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-12">
+                    <h3>$<span class="ticket-prices">49.00</span>/Day</h3>
+                    <button class="ticket-button">Purchase</button>
+                </div>
             </div>
-            <div class="col-lg-4 col-12">
-                <h3>$<span class="ticket-prices">89.00</span>/Day</h3>
-                <button class="ticket-button">Purchase</button>
+            <div class="ticket-box col-lg-6 col-md-8 col-12 row">
+                <div class="col-lg-8 col-12">
+                    <h3 class="ticket-title">1 Day Hallowwood Haunting Ticket</h3>
+                    <ul>
+                        <li>Valid from September 13 through October 31, 2024. Includes day tickets to park.</li>
+                        <li>Hallowwood Haunting special event is from 7pm-11pm.</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-12">
+                    <h3>$<span class="ticket-prices">89.00</span>/Day</h3>
+                    <button class="ticket-button">Purchase</button>
+                </div>
             </div>
-        </div>
-        <div class="ticket-box col-lg-6 col-md-8 col-12 row">
-            <div class="col-lg-8 col-12">
-                <h3 class="ticket-title">1 Day Mystic Holiday Ticket</h3>
-                <ul>
-                    <li>Ticket is valid from November 1, 2024 through December 31, 2024.</li>
-                    <li>Mystic Holiday special event is an all day Christmas celebration event.</li>
-                </ul>
+            <div class="ticket-box col-lg-6 col-md-8 col-12 row">
+                <div class="col-lg-8 col-12">
+                    <h3 class="ticket-title">1 Day Mystic Holiday Ticket</h3>
+                    <ul>
+                        <li>Ticket is valid from November 1, 2024 through December 31, 2024.</li>
+                        <li>Mystic Holiday special event is an all day Christmas celebration event.</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-12">
+                    <h3>$<span class="ticket-prices">89.00</span>/Day</h3>
+                    <button class="ticket-button">Purchase</button>
+                </div>
             </div>
-            <div class="col-lg-4 col-12">
-                <h3>$<span class="ticket-prices">89.00</span>/Day</h3>
-                <button class="ticket-button">Purchase</button>
+            <h1 class="mt-5">Standard Ticket</h1>
+            <div class="ticket-box col-lg-6 col-md-8 col-12 row">
+                <div class="col-lg-8 col-12">
+                    <h3 class="ticket-title">1 Day Mystic Grove Ticket</h3>
+                    <ul>
+                        <li>Ticket is valid and must be used within on month of the purchase date.</li>
+                        <li>This ticket does not include access to any of the special events that also take place on the day of purchase.</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-12">
+                    <h3>$<span class="ticket-prices">59.00</span>/Day</h3>
+                    <button class="ticket-button">Purchase</button>
+                </div>
             </div>
-        </div>
-        <h1 style="margin-top: 5rem">Standard Ticket</h1>
-        <div class="ticket-box col-lg-6 col-md-8 col-12 row">
-            <div class="col-lg-8 col-12">
-                <h3 class="ticket-title">1 Day Mystic Grove Ticket</h3>
-                <ul>
-                    <li>Ticket is valid and must be used within on month of the purchase date.</li>
-                    <li>This ticket does not include access to any of the special events that also take place on the day of purchase.</li>
-                </ul>
+            <div id="tickets-footer">
+                <p>For assistance booking your Mystic Grove vacation, including hotel and package bookings and tickets, please call (555) 555-5555.
+                    For our Mystic Dining package, please book your reservation online under the Dining section.</p>
             </div>
-            <div class="col-lg-4 col-12">
-                <h3>$<span class="ticket-prices">59.00</span>/Day</h3>
-                <button class="ticket-button">Purchase</button>
-            </div>
-        </div>
-        <div id="tickets-footer">
-            <p>For assistance booking your Mystic Grove vacation, including hotel and package bookings and tickets, please call (555) 555-5555.
-                For our Mystic Dining package, please book your reservation online under the Dining section.</p>
         </div>
     </div>
     <footer>
         <div id="footer-header">
-            <h4 style="font-size: 1.4rem;"><strong>Park Hours</strong></h4>
-            <span>Weekdays: 10:00am-10:00pm</span>
-            <span>Weekends: 8:30am-11:30pm</span>
+            <h4><strong>Park Hours</strong></h4>
+            <div>
+                <span>Weekdays: 10:00am-10:00pm</span>
+                <span>Weekends: 08:30am-11:30pm</span>
+            </div>
         </div>
         <h4>Stay Connected</h4>
         <div>

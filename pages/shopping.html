@@ -21,49 +21,55 @@
     </div>
     <div id="mobile-menu">
         <a href="index.html" class="nav-item nav-link"><em>Mystic Grove</em></a>
+        <a href="shopping.html" class="nav-item nav-link active"><i class="fa-solid fa-store"></i> Shopping</a>
         <a href="attractions.html" class="nav-item nav-link"><i class="fa-solid fa-shuttle-space"></i> Attractions</a>
         <a href="tickets.html" class="nav-item nav-link"><i class="fa-solid fa-ticket"></i> Tickets</a>
-        <a href="shopping.html" class="nav-item nav-link active"><i class="fa-solid fa-store"></i> Shopping</a>
         <a href="dining.html" class="nav-item nav-link"> <i class="fa-solid fa-utensils"></i> Dining</a>
-        <span id="cart-button" class="nav-item nav-link"><i class="fas fa-shopping-cart pl-1"></i> My Cart</span>
+        <span class="cart-button" class="nav-item nav-link">&nbsp<i class="fas fa-shopping-cart pl-1"></i>&nbspMy Cart</span>
     </div>
     <nav class="nav nav-tabs justify-content-center">
         <a href="index.html" class="nav-item nav-link top-nav" style="font-size: 1.5rem"><em>Mystic Grove</em></a>
+        <a href="shopping.html" class="nav-item nav-link top-nav active"><i class="fa-solid fa-store"></i> Shopping</a>
         <a href="attractions.html" class="nav-item nav-link top-nav"><i class="fa-solid fa-shuttle-space"></i> Attractions</a>
         <a href="tickets.html" class="nav-item nav-link top-nav"><i class="fa-solid fa-ticket"></i> Tickets</a>
-        <a href="shopping.html" class="nav-item nav-link top-nav active"><i class="fa-solid fa-store"></i> Shopping</a>
         <a href="dining.html" class="nav-item nav-link top-nav"> <i class="fa-solid fa-utensils"></i> Dining</a>
-        <span id="cart-button" class="nav-item nav-link top-nav"><i class="fas fa-shopping-cart pl-1"></i> My Cart</span>
+        <span class="cart-button" class="nav-item nav-link top-nav"><i class="fas fa-shopping-cart pl-1"></i>&nbspMy Cart</span>
     </nav>
+    <div id="cart">
+        <h1 class="mt-2">My Cart</h1>
+        <span id="exit-cart-button">X</span>
+        <div id="cart-items"></div>
+        <button class="checkout-button">Checkout</button>
+    </div>
     <div class="container-center" id="shopping-container">
         <div id="shopping-header" class="media-overlay">
             <h1>Mystic Shop</h1>
-            <img src="../imgs/shop-banner.jpeg">
+            <img src="../imgs/shop-banner.jpeg" alt="decorative shop banner" loading="lazy">
         </div>
-        <h1 class="first-h1">Exclusive Backpacks</h1>
+        <h1 id="first-shopping-h1">Exclusive Backpacks</h1>
         <div class="slick-backpacks">
             <div style="width: 100%; display: flex; align-items: center; justify-content: flex-start">
-                <img src="../imgs/hallowwood-backpack.jpeg">
+                <img src="../imgs/hallowwood-backpack.jpeg" alt="Halloween themed backpack" loading="lazy">
                 <h2>Hallowwood Packs</h2>
                 <h4>Shop Now</h4>
             </div>
             <div style="width: 100%; display: flex; align-items: center; justify-content: flex-start">
-                <img src="../imgs/future-backpack.jpeg">
+                <img src="../imgs/future-backpack.jpeg" alt="Rocket themed backpack" loading="lazy">
                 <h2>Space Gear</h2>
                 <h4>Shop Now</h4>
             </div>
             <div style="width: 100%; display: flex; align-items: center; justify-content: flex-start">
-                <img src="../imgs/pirate-backpack.jpeg">
+                <img src="../imgs/pirate-backpack.jpeg" alt="Pirate themed backpack" loading="lazy">
                 <h2>Pirate Treasures</h2>
                 <h4>Shop Now</h4>
             </div>
             <div style="width: 100%; display: flex; align-items: center; justify-content: flex-start">
-                <img src="../imgs/forest-backpack.jpeg">
+                <img src="../imgs/forest-backpack.jpeg" alt="Forest themed backpack" loading="lazy">
                 <h2>Fea Forest Satchels</h2>
                 <h4>Shop Now</h4>
             </div>
             <div style="width: 100%; display: flex; align-items: center; justify-content: flex-start">
-                <img src="../imgs/western-backpack.jpeg">
+                <img src="../imgs/western-backpack.jpeg" alt="Western themed backpack" loading="lazy">
                 <h2>Western Bags</h2>
                 <h4>Shop Now</h4>
             </div>
@@ -71,43 +77,43 @@
         <div id="sweater-container" class="row narrow">
             <h1 class="col-12 shopping-h1">Stay Warm This Winter</h1>
             <div class="col-lg-3 col-sm-6 col-12">
-                <img src="../imgs/sweatshirt-future.jpeg">
+                <img src="../imgs/sweatshirt-future.jpeg" alt="Future themed sweater" loading="lazy">
                 <h2>Future World</h2>
             </div>
             <div class="col-lg-3 col-sm-6 col-12">
-                <img src="../imgs/sweatshirt-pirate.jpeg">
+                <img src="../imgs/sweatshirt-pirate.jpeg" alt="Pirate themed sweater" loading="lazy">
                 <h2>Pirate Island</h2>
             </div>
             <div class="col-lg-3 col-sm-6 col-12">
-                <img src="../imgs/sweatshirt-hallowwood.jpeg">
+                <img src="../imgs/sweatshirt-hallowwood.jpeg" alt="Halloween themed sweater" loading="lazy">
                 <h2>Hallowwood</h2>
             </div>
             <div class="col-lg-3 col-sm-6 col-12">
-                <img src="../imgs/sweatshirt-western.jpeg">
+                <img src="../imgs/sweatshirt-western.jpeg" alt="Western themed sweater" loading="lazy">
                 <h2>Wild West</h2>
             </div>
         </div>
         <div class="row p-0 narrow" id="accessories">
             <h1 class="col-12 shopping-h1">Shop Accessories</h1>
             <div class="col-lg-6 col-12 accessories-img">
-                <img class="col-12 p-1" src="../imgs/accessories-forest.jpeg">
+                <img class="col-12 p-1" src="../imgs/accessories-forest.jpeg" alt="Fairy themed jewelry" loading="lazy">
                 <p>Fae Jewelry</p>
             </div>
             <div id="accessories-box" class="col-lg-6 col-12">
                 <div class="col-6 p-1 accessories-img">
-                    <img src="../imgs/accessories-pirate.jpeg">
+                    <img src="../imgs/accessories-pirate.jpeg" alt="A woman in a pirate bandana" loading="lazy">
                     <p>Pirate Bandanas</p>
                 </div>
                 <div class="col-6 p-1 accessories-img">
-                    <img src="../imgs/accessories-hallowwood.jpeg">
+                    <img src="../imgs/accessories-hallowwood.jpeg" alt="a witch wearing awitch hat" loading="lazy">
                     <p>Witch Hats</p>
                 </div>
                 <div class="col-6 p-1 accessories-img">
-                    <img src="../imgs/accessories-western.jpeg">
+                    <img src="../imgs/accessories-western.jpeg" alt="a woman wearing dream catcher jewelry" loading="lazy">
                     <p>Dream Catchers</p>
                 </div>
                 <div class="col-6 p-1 accessories-img">
-                    <img src="../imgs/accessories-future.jpeg">
+                    <img src="../imgs/accessories-future.jpeg" alt="A man holding a laser gun" loading="lazy">
                     <p>Laser Blasters</p>
                 </div>
             </div>
@@ -115,33 +121,33 @@
         <div id="memorabilia" class="row narrow">
             <h1 class="col-12 shopping-h1">Mystic Memorabilia</h1>
             <div class="col-md-6 col-12">
-                <img src="../imgs/swimsuit-mermaid.jpeg">
+                <img src="../imgs/swimsuit-mermaid.jpeg" alt="a woman in a mermaid themed swimsuit" loading="lazy">
                 <h2>Beach Attire</h2>
             </div>
             <div class="col-md-6 col-12">
-                <img src="../imgs/hallowwood-toy.jpeg">
+                <img src="../imgs/hallowwood-toy.jpeg" alt="A pumpkpin scarecrow toy" loading="lazy">
                 <h2>Toys and Dolls</h2>
             </div>
         </div>
         <div id="coming-soon" class="row narrow">
             <h1 class="col-12 shopping-h1">Coming Soon</h1>
             <div class="col-lg-3 col-md-6 col-12">
-                <img src="../imgs/toy-pirate.jpeg">
+                <img src="../imgs/toy-pirate.jpeg" alt="a mermaid toy" loading="lazy">
                 <h4 class="mt-2">July 12</h4>
                 <h3>Mermaid Toy</h3>
             </div>
             <div class="col-lg-3 col-md-6 col-12">
-                <img src="../imgs/cup-forest.jpeg">
+                <img src="../imgs/cup-forest.jpeg" alt="a glowing forest themed cup" loading="lazy">
                 <h4 class="mt-2">April 15</h4>
                 <h3>Tree Mug</h3>
             </div>
             <div class="col-lg-3 col-md-6 col-12">
-                <img src="../imgs/boots-space.jpeg">
+                <img src="../imgs/boots-space.jpeg" alt="Futuristic glowing hover boots" loading="lazy">
                 <h4 class="mt-2">January 7</h4>
                 <h3>Hover Boots</h3>
             </div>
             <div class="col-lg-3 col-md-6 col-12">
-                <img src="../imgs/skirt-hallowwood.jpeg">
+                <img src="../imgs/skirt-hallowwood.jpeg" alt="a woman in an orange skirt" loading="lazy">
                 <h4 class="mt-2">October 31</h4>
                 <h3>Hallowwood Skirt</h3>
             </div>
@@ -149,9 +155,11 @@
     </div>
     <footer>
         <div id="footer-header">
-            <h4 style="font-size: 1.4rem;"><strong>Park Hours</strong></h4>
-            <span>Weekdays: 10:00am-10:00pm</span>
-            <span>Weekends: 8:30am-11:30pm</span>
+            <h4><strong>Park Hours</strong></h4>
+            <div>
+                <span>Weekdays: 10:00am-10:00pm</span>
+                <span>Weekends: 08:30am-11:30pm</span>
+            </div>
         </div>
         <h4>Stay Connected</h4>
         <div>
