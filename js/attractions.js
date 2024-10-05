@@ -284,7 +284,7 @@ const attractionInformation = [
         title: "Space Race",
         land: "Future World",
         color: "future-world",
-        img: "rocket-launch",
+        img: "space-race",
         ages: "Teens, Adults",
         type: "Thrill Ride"
     },
