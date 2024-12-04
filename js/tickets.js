@@ -5,6 +5,7 @@ const ticketPrices = document.querySelectorAll(".ticket-prices");
 for (let i = 0; i < ticketButtons.length; i++) {
     ticketButtons[i].addEventListener("click", () => {
         cart.style.display = "flex";
+        clearCart = false;
         // CREATE CART ITEM
         document.getElementById("cart-items").innerHTML += `
         <div class="cart-ticket row">

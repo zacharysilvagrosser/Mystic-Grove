@@ -42,10 +42,9 @@ for (let i = 0; i < cartItemImgs.length; i++) {
             <p class="cart-name">${cartItemNames[i]}</p>
             <label for="quantity">Quantity: </label>
             <input class="quantity" type="number" value="${cartItemQuantities[i]}" min="1" max="9">
-            <span> at $${cartItemPrices[i] / cartItemQuantities[i]}</span>
+            <span> at $${(cartItemPrices[i] / cartItemQuantities[i]).toFixed(2)}</span>
         </div>
-        <p class="col-sm-2 col-10 cart-price">${cartItemPrices[i]}</p>
-        <div class="close">X</div>
+        <p class="col-sm-2 col-10 cart-price">${(cartItemPrices[i] * cartItemQuantities[i]).toFixed(2)}</p>
     </div>`
 }
 for (let i = 0; i < cartTicketNames.length; i++) {
@@ -58,35 +57,24 @@ for (let i = 0; i < cartTicketNames.length; i++) {
                 <span> at $${cartTicketPrices[i]}</span>
             </div>
             <p class="col-md-2 col-10 cart-ticket-price">${cartTicketPrices[i]}</p>
-            <span class="col-md-1 col-2 close-ticket">X</span>
         </div>`;
 }
-const closeButtons = document.querySelectorAll(".close");
-const closeTicketButtons = document.querySelectorAll(".close-ticket");
 let cartItems = document.querySelectorAll(".cart-item");
 let cartTicket = document.querySelectorAll(".cart-ticket");
 let cartTicketPrice = document.querySelectorAll(".cart-ticket-price");
 let ticketQuantities = document.querySelectorAll(".ticket-quantity");
 const quantities = document.querySelectorAll(".quantity");
 const cartPrice = document.querySelectorAll(".cart-price");
-for (let j = 0; j < closeButtons.length; j++) {
-    closeButtons[j].addEventListener("click", () => {
-        cartItems[j].remove();
-        console.log(cartItems.length);
-    });
+for (let j = 0; j < cartItems.length; j++) {
     // UPDATE PRICE OF ITEMS WHEN INCREASING QUANTITY
     cartItemQuantities[j] = quantities[j].value;
     quantities[j].addEventListener("input", () => {
         cartPrice[j].innerText = `${(cartItemPrices[j] * quantities[j].value).toFixed(2)}`;
         cartItemQuantities[j] = quantities[j].value;
-        const storeCartImgss = document.querySelectorAll(".cart-img");
-        console.log(storeCartImgss);
+        console.log(cartItemPrices[j], quantities[j].value)
     });
 }
-for (let j = 0; j < closeTicketButtons.length; j++) {
-    closeTicketButtons[j].addEventListener("click", () => {
-        cartTicket[j].remove();
-    });
+for (let j = 0; j < cartTicket.length; j++) {
     ticketQuantities[j].value = cartTicketQuantities[j];
     ticketQuantities[j].addEventListener("input", () => {
         //cartTicketPrice[j].innerText = `${(ticketPrices[i].innerText * ticketQuantities[j].value).toFixed(2)}`;
@@ -94,16 +82,40 @@ for (let j = 0; j < closeTicketButtons.length; j++) {
     });
 }
 let storedData = cartItemImgs.length;
+let clearCart = false;
+document.getElementById('clear-button').addEventListener('click', () => {
+    clearCart = true;
+    for (let j = 0; j < cartItems.length; j++) {
+        cartItems[j].remove();
+    }
+    for (let j = 0; j < cartTicket.length; j++) {
+        cartTicket[j].remove();
+    }
+});
+document.getElementById('exit-cart-button').addEventListener('click', () => {
+    document.getElementById("shop-container").classList.remove("dim");
+});
+document.querySelectorAll('.cart-button').forEach(button => {
+    button.addEventListener('click', () => {
+        document.getElementById("shop-container").classList.remove("dim");
+    });
+});
 // STORE ALL CART ITEMS
 $("a").click(function() {
+    if (clearCart) {
+        localStorage.clear();
+        return;
+    }
     const storeCartImg = document.querySelectorAll(".cart-img");
     const storeCartName = document.querySelectorAll(".cart-name");
     const storeCartPrice = document.querySelectorAll(".cart-price");
+    const storeCartQuantities = document.querySelectorAll(".quantity");
     for (let i = 0 + storedData; i < storeCartImg.length; i++) {
         // STORE VALUES IN ARRAY SO CART ITMES CAN PERSIST THROUGH PAGE CHANGES
         cartItemImgs.push(storeCartImg[i].getAttribute("src"));
         cartItemNames.push(storeCartName[i].innerHTML);
-        cartItemPrices.push(storeCartPrice[i].innerText);
+        cartItemPrices.push(storeCartPrice[i].innerText / storeCartQuantities[i].value);
+        cartItemQuantities.push(storeCartQuantities[i].value);
     }
     localStorage.setItem('cartItemImgs', JSON.stringify(cartItemImgs));
     localStorage.setItem('cartItemNames', JSON.stringify(cartItemNames));

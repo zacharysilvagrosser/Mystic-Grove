@@ -24,10 +24,13 @@ const shopItems = document.querySelectorAll(".shop-item");
 const itemImgs = document.querySelectorAll(".item-img");
 const itemNames = document.querySelectorAll(".item-name");
 const itemPrices = document.querySelectorAll(".item-price");
+let newCartPrices = [];
+
 for (let i = 0; i < shopItems.length; i++) {
     shopItems[i].addEventListener("click", () => {
         document.getElementById("shop-container").classList.add("dim");
         cart.style.display = "flex";
+        clearCart = false;
         // CREATE CART ITEM
         document.getElementById("cart-items").innerHTML += `
         <div class="cart-item row">
@@ -45,13 +48,15 @@ for (let i = 0; i < shopItems.length; i++) {
         cartItems = document.querySelectorAll(".cart-item");
         const quantities = document.querySelectorAll(".quantity");
         const cartPrice = document.querySelectorAll(".cart-price");
+        newCartPrices.push(itemPrices[i].innerText);
         for (let j = 0; j < cartItems.length; j++) {
             closeButtons[j].addEventListener("click", () => {
                 cartItems[j].remove();
             });
             quantities[j].addEventListener("input", () => {
-                cartPrice[j].innerText = `${(itemPrices[i].innerText * quantities[j].value).toFixed(2)}`;
+                cartPrice[j].innerText = `${(newCartPrices[j] * quantities[j].value).toFixed(2)}`;
                 cartItemQuantities[j] = quantities[j].value;
+                console.log(newCartPrices[j], quantities[j].value);
             });
             quantities[j].value = cartItemQuantities[j];
             if (quantities[j].value == '') {
@@ -59,6 +64,5 @@ for (let i = 0; i < shopItems.length; i++) {
                 cartItemQuantities[j] = quantities[j].value;
             }
         }
-
     });
 }

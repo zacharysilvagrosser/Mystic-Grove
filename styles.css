@@ -228,7 +228,7 @@ video {
   color: black;
   text-align: left;
 }
-.ticket-button, .checkout-button {
+.ticket-button, .cart-buttons {
   width: 10rem;
   margin-top: .5rem;
   margin-bottom: 1.5rem;
@@ -239,10 +239,10 @@ video {
   color: white;
   transition: .4s;
 }
-.checkout-button {
+.cart-buttons {
     margin-top: 1.5rem;
 }
-.ticket-button:hover, .checkout-button:hover {
+.ticket-button:hover, .cart-buttons:hover {
   border-color: rgb(0, 24, 44);
   background-color: rgb(0, 24, 44);
   border-radius: 10px;
