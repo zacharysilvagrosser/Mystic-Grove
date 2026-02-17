@@ -1,0 +1,46 @@
+#root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  width: 800px;
+  padding: 20px;
+}
+
+.chat-box {
+    width: 100%;
+    min-height: 300px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.chat-message {
+  margin: 5px 0;
+}
+
+.chat-message.user {
+  text-align: right;
+}
+
+.chat-message.ai {
+  text-align: left;
+}
+
+input.message-input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 5px;
+}
+
+button.send-button {
+  width: 18%;
+  padding: 8px;
+}
