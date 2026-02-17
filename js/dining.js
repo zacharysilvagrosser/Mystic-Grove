@@ -1,7 +1,6 @@
 function createDining(title, land, color, img, type, money) {
     document.getElementById("attractions-container").innerHTML += `
-    <a href="../pages/attraction-descriptions/${img}.html" style="color: black">
-        <div class="attraction row">
+        <div class="attraction row" data-land="${land}" data-type="${type}" data-money="${money}">
             <img class="col-lg-3 col-12" src="../imgs/${img}.jpg" alt="dining-picture" loading="lazy">
             <div class="col-lg-8 col-sm-11 col-10">
                 <h1 class="attraction-title mt-lg-0 mt-3">${title}</h1>
@@ -13,7 +12,7 @@ function createDining(title, land, color, img, type, money) {
                 <i class="fa fa-chevron-right"></i>
             </div>
         </div>
-    </a>`
+    `
 }
 const attractionInformation = [
     {
@@ -196,243 +195,141 @@ const attractionInformation = [
 for (let i = 0; i < attractionInformation.length; i++) {
     createDining(attractionInformation[i].title, attractionInformation[i].land, attractionInformation[i].color, attractionInformation[i].img, attractionInformation[i].type, attractionInformation[i].money)
 }
-// SORT ATTRACTIONS INTO ARRAYS BY ATTRACTION TYPE
-let [quickService, tableService, characterDining, fineDining, bar, reservations, moneyOne, moneyTwo, moneyThree, moneyFour] = [[], [], [], [], [], [], [], [], [], []];
-let [quickServiceActive, tableServiceActive, characterDiningActive, fineDiningActive, barActive, reservationsActive, moneyOneActive, moneyTwoActive, moneyThreeActive, moneyFourActive] = [false, false, false, false, false, false, false, false, false, false];
-let diningTypeArrays = [quickService, tableService, characterDining, fineDining, bar, reservations, moneyOne, moneyTwo, moneyThree, moneyFour];
-let activeDining = [quickServiceActive, tableServiceActive, characterDiningActive, fineDiningActive, barActive, reservationsActive, moneyOneActive, moneyTwoActive, moneyThreeActive, moneyFourActive];
-let diningButtons = ["#quick-service-button", "#table-service-button", "#character-dining-button", "#fine-dining-button", "#bar-button", "#reservations-button",
-    "#money-one-button", "#money-two-button", "#money-three-button", "#money-four-button"];
-let diningTypeStrings = ["Quick Service", "Table Service", "Character Dining", "Fine Dining", "Bar", "Reservations", "$", "$$", "$$$", "$$$$"];;
-function sortDining(diningType, array) {
-    $('.attraction').each (function() {
-        if (this.innerHTML.includes(`${diningType}`)) {
-            array.push(this);
+
+// FILTERING SYSTEM
+const filterState = {
+    selectedType: null,
+    selectedMoney: null,
+    selectedLand: "All Lands"
+};
+
+const landMap = {
+    "all-lands": "All Lands",
+    "fae-forest": "Fae Forest",
+    "future-world": "Future World",
+    "hallowwood": "Hallowwood",
+    "pirate-island": "Pirate Island",
+    "wild-west": "Wild West"
+};
+
+const buttonConfig = {
+    type: {
+        "#quick-service-button": "Quick Service",
+        "#table-service-button": "Table Service",
+        "#character-dining-button": "Character Dining",
+        "#fine-dining-button": "Fine Dining",
+        "#bar-button": "Bar",
+        "#reservations-button": "Reservations"
+    },
+    money: {
+        "#money-one-button": "$",
+        "#money-two-button": "$$",
+        "#money-three-button": "$$$",
+        "#money-four-button": "$$$$"
+    }
+};
+
+// FILTER DINING BASED ON CURRENT STATE
+function filterDining() {
+    $('.attraction').each(function() {
+        const land = $(this).data('land');
+        const type = $(this).data('type');
+        const money = $(this).data('money');
+        
+        let showDining = true;
+        
+        // Filter by land
+        if (filterState.selectedLand !== "All Lands" && land !== filterState.selectedLand) {
+            showDining = false;
+        }
+        
+        // Filter by type
+        if (filterState.selectedType && type !== filterState.selectedType) {
+            showDining = false;
+        }
+        
+        // Filter by money  
+        if (filterState.selectedMoney && money !== filterState.selectedMoney) {
+            showDining = false;
+        }
+        
+        if (showDining) {
+            $(this).show();
+        } else {
+            $(this).hide();
         }
     });
 }
-sortDining("Quick Service", quickService);
-sortDining("Table Service", tableService);
-sortDining("Character Dining", characterDining);
-sortDining("Fine Dining", fineDining);
-sortDining("Bar", bar);
-sortDining("Reservations", reservations);
-sortDining("$", moneyOne);
-sortDining("$$", moneyTwo);
-sortDining("$$$", moneyThree);
-sortDining("$$$$", moneyFour);
-console.log(diningTypeArrays);
-// ACTIVELAND CHANGES SELECT ELEMENT VALUE INTO A SPACED UPPERCASE STRING SO LANDS CAN BE CHANGED FORM THE SELECT ELEMENT
-let activeLand = document.getElementById("attraction-land-sorter").value.replace("-"," ").split(" ");
-for (let i = 0; i < activeLand.length; i++) {
-    activeLand[i] = activeLand[i][0].toUpperCase() + activeLand[i].substr(1);
+
+// DESELECT ALL BUTTONS IN A CATEGORY
+function deselectAllButtons(category) {
+    const buttons = buttonConfig[category];
+    for (let buttonId in buttons) {
+        $(buttonId).css('background-color', 'white');
+        $(buttonId).css('color', 'black');
+    }
 }
-// RUNS WHEN LAND SELECT ELEMENT IS CHANGED
+
+// TOGGLE FILTER BUTTON (SINGLE-SELECT WITHIN CATEGORY)
+function toggleFilterButton(buttonId, category, value) {
+    const isCurrentlySelected = (category === 'type' && filterState.selectedType === value) ||
+                                 (category === 'money' && filterState.selectedMoney === value);
+    
+    if (isCurrentlySelected) {
+        // Deselect
+        filterState[`selected${category.charAt(0).toUpperCase() + category.slice(1)}`] = null;
+        $(buttonId).css('background-color', 'white');
+        $(buttonId).css('color', 'black');
+    } else {
+        // Deselect all other buttons in this category first
+        deselectAllButtons(category);
+        
+        // Select this button
+        filterState[`selected${category.charAt(0).toUpperCase() + category.slice(1)}`] = value;
+        $(buttonId).css('background-color', 'var(--future-color)');
+        $(buttonId).css('color', 'white');
+    }
+    
+    filterDining();
+}
+
+// LAND DROPDOWN CHANGE HANDLER
 function changeActiveLand() {
-    // UPDATES WHICH LANDS ARE SHOWN BASED ON THE VALUE OF THE LAND SELECT ELEMENT
-    function updateLand(land) {
-        activeLand = document.getElementById("attraction-land-sorter").value.replace("-"," ").split(" ");
-        for (let i = 0; i < activeLand.length; i++) {
-            activeLand[i] = activeLand[i][0].toUpperCase() + activeLand[i].substr(1);
-        }
-        for (let i = 0; i < diningTypeArrays.length; i++) {
-            for (let j = 0; j < diningTypeArrays[i].length; j++) {
-                if (!diningTypeArrays[i][j].innerHTML.includes(`${land}`)) {
-                    $(diningTypeArrays[i][j]).hide();
-                } else if (diningTypeArrays[i][j].innerHTML.includes(`${land}`)) {
-                    activeDiningOptions.push(diningTypeArrays[i][j]);
-                    if (!activeDining[0] && !activeDining[1] && !activeDining[2] && !activeDining[3] && !activeDining[4] && !activeDining[5] && !activeDining[6] && !activeDining[7] && !activeDining[8] && !activeDining[9]) {
-                        $(diningTypeArrays[i][j]).show();
-                    } else {
-                        updateActiveDiningOptions();
-                    }
-                }
-            }
-        }
-    }
-    switch (document.getElementById("attraction-land-sorter").value) {
-        case "fae-forest":
-            updateLand("Fae Forest");
-            break;
-        case "future-world":
-            updateLand("Future World");
-            break;
-        case "hallowwood":
-            updateLand("Hallowwood");
-            break;
-        case "pirate-island":
-            updateLand("Pirate Island");
-        break;
-        case "wild-west":
-            updateLand("Wild West");
-            break;
-        default:
-            activeLand = document.getElementById("attraction-land-sorter").value.replace("-"," ").split(" ");
-            for (let i = 0; i < activeLand.length; i++) {
-                activeLand[i] = activeLand[i][0].toUpperCase() + activeLand[i].substr(1);
-            }
-            for (let i = 0; i < diningTypeArrays.length; i++) {
-                for (let j = 0; j < diningTypeArrays[i].length; j++) {
-                    activeDiningOptions.push(diningTypeArrays[i][j]);
-                    if (!activeDining[0] && !activeDining[1] && !activeDining[2] && !activeDining[3] && !activeDining[4] && !activeDining[5] && !activeDining[6] && !activeDining[7] && !activeDining[8] && !activeDining[9]) {
-                        $(diningTypeArrays[i][j]).show();
-                    }
-                }
-            }
-            break;
-    }
+    const landValue = document.getElementById("attraction-land-sorter").value;
+    filterState.selectedLand = landMap[landValue] || "All Lands";
+    filterDining();
 }
-let activeDiningOptions = [];
-// SHOW ONLY ATTRACTIONS THAT MATCH THE FILTER CRITERIA
-function updateActiveDiningOptions() {
-    diningTypeArrays.forEach(i => {
-        $(i).hide();
-    });
-    activeDiningOptions = [];
-    // ADD ALL ATTRACTIONS WITH BUTTONS THAT ARE PRESSED
-    for (let i = 0; i < activeDining.length; i++) {
-        if (activeDining[i] || !activeDining[0] && !activeDining[1] && !activeDining[2] && !activeDining[3] && !activeDining[4] && !activeDining[5] && !activeDining[6] && !activeDining[7]) {
-            for (let j = 0; j < diningTypeArrays[i].length; j++) {
-                if (diningTypeArrays[i][j].innerHTML.includes(activeLand.join(" ")) || activeLand.join(" ") === "All Lands") {
-                    diningTypeArrays[i].forEach(j => {
-                        activeDiningOptions.push(j);
-                    });
-                }
-            }
-        }
-    }
-    $(activeDiningOptions).show();
-    // HIDE ANY LAND THAT DOESN'T MATCH WHICH BUTTONS ARE SELECTED
-    switch (document.getElementById("attraction-land-sorter").value) {
-        case "fae-forest":
-            activeDiningOptions.forEach(i => {
-                if (!i.innerHTML.includes(`Fae Forest`)) {
-                    $(i).hide();
-                }
-            });
-            break;
-        case "future-world":
-            activeDiningOptions.forEach(i => {
-                if (!i.innerHTML.includes(`Future World`)) {
-                    $(i).hide();
-                }
-            });
-            break;
-        case "hallowwood":
-            activeDiningOptions.forEach(i => {
-                if (!i.innerHTML.includes(`Hallowwood`)) {
-                    $(i).hide();
-                }
-            });
-            break;
-        case "pirate-island":
-            activeDiningOptions.forEach(i => {
-                if (!i.innerHTML.includes(`Pirate Island`)) {
-                    $(i).hide();
-                }
-            });
-        break;
-        case "wild-west":
-            activeDiningOptions.forEach(i => {
-                if (!i.innerHTML.includes(`Wild West`)) {
-                    $(i).hide();
-                }
-            });
-            break;
-        default:
-            activeDiningOptions.forEach(i => {
-                    $(i).show();
-            });
-            break;
-    }
-    // HIDE ANY ATTRACTIONS THAT DON'T MATCH WHICH BUTTONS ARE SELECTED
-    if (activeDining[6] || activeDining[7] || activeDining[8] || activeDining[9]) {
-        if (!activeDining[6]) {
-            activeDiningOptions.forEach(k => {
-                if (k.innerHTML.includes("$") && !k.innerHTML.includes("$$") && !k.innerHTML.includes("$$$") && !k.innerHTML.includes("$$$$")) {
-                    $(k).hide();
-                }
-            });
-        }
-        if (!activeDining[7]) {
-            activeDiningOptions.forEach(k => {
-                if (k.innerHTML.includes("$$") && !k.innerHTML.includes("$$$") && !k.innerHTML.includes("$$$$")) {
-                    $(k).hide();
-                }
-            });
-        }
-        if (!activeDining[8]) {
-            activeDiningOptions.forEach(k => {
-                if (k.innerHTML.includes("$$$") && !k.innerHTML.includes("$$$$")) {
-                    $(k).hide();
-                }
-                
-            });
-        }
-        if (!activeDining[9]) {
-            activeDiningOptions.forEach(k => {
-                if (k.innerHTML.includes("$$$$")) {
-                    $(k).hide();
-                }
-            });
-        }
-    }
-    if (activeDining[0] || activeDining[1] || activeDining[2] || activeDining[3] || activeDining[4] || activeDining[5]) {
-        for (let i = 0; i < 6; i++) {
-            if (!activeDining[i]) {
-                activeDiningOptions.forEach(k => {
-                    if (k.innerHTML.includes(`${diningTypeStrings[i]}`)) {
-                        $(k).hide();
-                    }
-                });
-            }
-        }
-    }
-}
-// UPDATE VISIBILITY OF ATTRACTIONS IF THEY ARE ACTIVELY CLICKED ON OR NOT
-function changeActiveDiningButton(trigger) {
-    for (let i = 0; i < diningTypeStrings.length; i++) {
-        if (trigger === diningTypeStrings[i]) {
-            if (activeDining[i]) {
-                activeDining[i] = false;
-                $(diningButtons[i]).css('background-color','white');
-                $(diningButtons[i]).css('color', 'black');
-            } else {
-                activeDining[i] = true;
-                $(diningButtons[i]).css('background-color','var(--future-color)');
-                $(diningButtons[i]).css('color', 'white');
-            }
-        }
-    }
-    updateActiveDiningOptions();
-}
+
+// EVENT HANDLERS FOR TYPE BUTTONS
 $("#quick-service-button").click(function() {
-    changeActiveDiningButton("Quick Service");
+    toggleFilterButton("#quick-service-button", "type", "Quick Service");
 });
 $("#table-service-button").click(function() {
-    changeActiveDiningButton("Table Service");
+    toggleFilterButton("#table-service-button", "type", "Table Service");
 });
 $("#character-dining-button").click(function() {
-    changeActiveDiningButton("Character Dining");
+    toggleFilterButton("#character-dining-button", "type", "Character Dining");
 });
 $("#fine-dining-button").click(function() {
-    changeActiveDiningButton("Fine Dining");
+    toggleFilterButton("#fine-dining-button", "type", "Fine Dining");
 });
 $("#bar-button").click(function() {
-    changeActiveDiningButton("Bar");
+    toggleFilterButton("#bar-button", "type", "Bar");
 });
 $("#reservations-button").click(function() {
-    changeActiveDiningButton("Reservations");
+    toggleFilterButton("#reservations-button", "type", "Reservations");
 });
+
+// EVENT HANDLERS FOR MONEY BUTTONS
 $("#money-one-button").click(function() {
-    changeActiveDiningButton("$");
+    toggleFilterButton("#money-one-button", "money", "$");
 });
 $("#money-two-button").click(function() {
-    changeActiveDiningButton("$$");
+    toggleFilterButton("#money-two-button", "money", "$$");
 });
 $("#money-three-button").click(function() {
-    changeActiveDiningButton("$$$");
+    toggleFilterButton("#money-three-button", "money", "$$$");
 });
 $("#money-four-button").click(function() {
-    changeActiveDiningButton("$$$$");
+    toggleFilterButton("#money-four-button", "money", "$$$$");
 });

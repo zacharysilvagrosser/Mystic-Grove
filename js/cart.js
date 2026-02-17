@@ -5,8 +5,7 @@ class ShoppingCart {
     constructor() {
         this.cartElement = document.getElementById("cart");
         this.cartItemsElement = document.getElementById("cart-items");
-        console.log("Cart element:", this.cartElement);
-        console.log("Cart items element:", this.cartItemsElement);
+        this.checkoutMessage = null;
         if (!this.cartElement || !this.cartItemsElement) {
             console.error("Cart elements not found!");
             return;
@@ -31,11 +30,9 @@ class ShoppingCart {
 
         // Cart toggle buttons
         const cartButtons = document.querySelectorAll(".cart-button");
-        console.log("Found cart buttons:", cartButtons.length);
         cartButtons.forEach(btn => {
             btn.addEventListener("click", (e) => {
                 e.preventDefault();
-                console.log("Cart button clicked!");
                 if (this.cartElement.style.display === "none" || this.cartElement.style.display === "") {
                     this.cartElement.style.display = "flex";
                 } else {
@@ -51,6 +48,17 @@ class ShoppingCart {
                 this.clearCart();
             });
         }
+
+        // Checkout buttons (all cart-buttons except clear)
+        const checkoutButtons = document.querySelectorAll(".cart-buttons");
+        checkoutButtons.forEach(btn => {
+            if (btn.id === "clear-button") {
+                return;
+            }
+            btn.addEventListener("click", () => {
+                this.checkout();
+            });
+        });
     }
 
     // Load cart from localStorage
@@ -114,6 +122,31 @@ class ShoppingCart {
         this.renderCart();
     }
 
+    // Checkout cart
+    checkout() {
+        if (this.cart.length === 0) {
+            this.showCheckoutMessage("Your cart is empty.", false);
+            return;
+        }
+        this.cart = [];
+        this.saveCart();
+        this.showCheckoutMessage("You're checked out! Enjoy your goods.", true);
+        this.renderCart();
+    }
+
+    // Show checkout message in cart
+    showCheckoutMessage(message, isSuccess) {
+        this.checkoutMessage = {
+            message,
+            isSuccess
+        };
+        this.renderCart();
+        window.setTimeout(() => {
+            this.checkoutMessage = null;
+            this.renderCart();
+        }, 3000);
+    }
+
     // Calculate totals
     getTotal() {
         return this.cart.reduce((total, item) => {
@@ -126,7 +159,22 @@ class ShoppingCart {
         this.cartItemsElement.innerHTML = '';
 
         if (this.cart.length === 0) {
-            this.cartItemsElement.innerHTML = '<p style="padding: 20px; text-align: center;">Your cart is empty</p>';
+            if (this.checkoutMessage) {
+                const iconClass = this.checkoutMessage.isSuccess ? "fa-check-circle" : "fa-info-circle";
+                this.cartItemsElement.innerHTML = `
+                    <div style="padding: 3rem 1rem; text-align: center; color: white;">
+                        <i class="fas ${iconClass}" style="font-size: 4rem; opacity: 0.35; margin-bottom: 1rem;"></i>
+                        <p style="font-size: 1.1rem; font-weight: 600;">${this.checkoutMessage.message}</p>
+                        <p style="font-size: 0.9rem; opacity: 0.8;">Thanks for visiting Mystic Grove!</p>
+                    </div>`;
+            } else {
+                this.cartItemsElement.innerHTML = `
+                    <div style="padding: 3rem 1rem; text-align: center; color: white;">
+                        <i class="fas fa-shopping-cart" style="font-size: 4rem; opacity: 0.3; margin-bottom: 1rem;"></i>
+                        <p style="font-size: 1.1rem; font-weight: 500;">Your cart is empty</p>
+                        <p style="font-size: 0.9rem; opacity: 0.8;">Add some items to get started!</p>
+                    </div>`;
+            }
             return;
         }
 
@@ -165,7 +213,7 @@ class ShoppingCart {
         const total = this.getTotal();
         this.cartItemsElement.innerHTML += `
             <div class="cart-total">
-                <h3>Total: $${total.toFixed(2)}</h3>
+                <h3>Total: <span>$${total.toFixed(2)}</span></h3>
             </div>`;
 
         // Attach event listeners to newly created elements
@@ -213,7 +261,5 @@ class ShoppingCart {
 // Initialize cart globally after DOM is ready
 let shoppingCart;
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Initializing shopping cart...");
     shoppingCart = new ShoppingCart();
-    console.log("Shopping cart initialized:", shoppingCart);
 });

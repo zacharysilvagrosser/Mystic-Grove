@@ -1,6 +1,6 @@
 function createAttraction(title, land, color, img, ages, type) {
     document.getElementById("attractions-container").innerHTML += `
-        <div class="attraction row">
+        <div class="attraction row" data-land="${land}" data-type="${type}" data-ages="${ages}">
             <img class="col-lg-3 col-12" src="../imgs/${img}.jpeg" alt="attraction-picture" loading="lazy">
             <div class="col-lg-8 col-sm-11 col-10">
                 <h1 class="attraction-title mt-lg-0 mt-3">${title}</h1>
@@ -401,236 +401,151 @@ const attractionInformation = [
         type: "Thrill Ride"
     },
 ];
+
+// Create all attractions
 for (let i = 0; i < attractionInformation.length; i++) {
-    createAttraction(attractionInformation[i].title, attractionInformation[i].land, attractionInformation[i].color, attractionInformation[i].img, attractionInformation[i].ages, attractionInformation[i].type)
+    createAttraction(
+        attractionInformation[i].title, 
+        attractionInformation[i].land, 
+        attractionInformation[i].color, 
+        attractionInformation[i].img, 
+        attractionInformation[i].ages, 
+        attractionInformation[i].type
+    );
 }
-// SORT ATTRACTIONS INTO ARRAYS BY ATTRACTION TYPE
-let [thrillRides, gentleRides, characters, shows, kids, teens, adults, allAges] = [[], [], [], [], [], [], [], []];
-let [thrillRidesActive, gentleRidesActive, charactersActive, showsActive, kidsActive, teensActive, adultsActive, allAgesActive] = [false, false, false, false, false, false, false, false];
-let attractionTypeArrays = [thrillRides, gentleRides, characters, shows, kids, teens, adults, allAges];
-let activeAttractions = [thrillRidesActive, gentleRidesActive, charactersActive, showsActive, kidsActive, teensActive, adultsActive, allAgesActive];
-let attractionButtons = ["#thrill-rides-button", "#gentle-rides-button", "#characters-button", "#shows-button", "#kids-button", "#teens-button", "#adults-button", "#all-ages-button"];
-let attractionTypeStrings = ["Thrill Rides", "Gentle Rides", "Characters", "Shows", "Kids", "Teens", "Adults", "All Ages"];;
-function sortAttractions(attractionType, array) {
-    $('.attraction').each (function() {
-        if (this.innerHTML.includes(`${attractionType}`)) {
-            array.push(this);
+
+// ============================================
+// MODERN FILTERING SYSTEM
+// ============================================
+
+// State management - single selections only
+const filterState = {
+    selectedLand: 'All Lands',
+    selectedType: null,      // Only one: 'Thrill Ride', 'Gentle Ride', 'Character', 'Show'
+    selectedAges: null       // Only one: 'Kids', 'Teens', 'Adults', 'All Ages'
+};
+
+// Land mapping
+const landMap = {
+    'all-lands': 'All Lands',
+    'fae-forest': 'Fae Forest',
+    'future-world': 'Future World',
+    'hallowwood': 'Hallowwood',
+    'pirate-island': 'Pirate Island',
+    'wild-west': 'Wild West'
+};
+
+// Button configuration
+const buttonConfig = {
+    'thrill-rides-button': { category: 'type', value: 'Thrill Ride' },
+    'gentle-rides-button': { category: 'type', value: 'Gentle Ride' },
+    'characters-button': { category: 'type', value: 'Character' },
+    'shows-button': { category: 'type', value: 'Show' },
+    'kids-button': { category: 'ages', value: 'Kids' },
+    'teens-button': { category: 'ages', value: 'Teens' },
+    'adults-button': { category: 'ages', value: 'Adults' },
+    'all-ages-button': { category: 'ages', value: 'All Ages' }
+};
+
+// Get all buttons in a category
+const typeButtons = ['thrill-rides-button', 'gentle-rides-button', 'characters-button', 'shows-button'];
+const ageButtons = ['kids-button', 'teens-button', 'adults-button', 'all-ages-button'];
+
+// Main filter function
+function filterAttractions() {
+    const attractions = document.querySelectorAll('.attraction');
+    
+    attractions.forEach(attraction => {
+        const land = attraction.dataset.land;
+        const type = attraction.dataset.type;
+        const ages = attraction.dataset.ages;
+        
+        // Check land match
+        const matchesLand = filterState.selectedLand === 'All Lands' || land === filterState.selectedLand;
+        
+        // Check type match (show all if none selected)
+        const matchesType = !filterState.selectedType || type === filterState.selectedType;
+        
+        // Check ages match (show all if none selected, or if ages field includes the selected age)
+        const matchesAges = !filterState.selectedAges || ages.includes(filterState.selectedAges);
+        
+        // Show/hide based on all criteria
+        if (matchesLand && matchesType && matchesAges) {
+            $(attraction).show();
+        } else {
+            $(attraction).hide();
         }
     });
 }
-sortAttractions("Thrill Ride", thrillRides);
-sortAttractions("Gentle Ride", gentleRides);
-sortAttractions("Character", characters);
-sortAttractions("Show", shows);
-sortAttractions("Kids", kids);
-sortAttractions("Teens", teens);
-sortAttractions("Adults", adults);
-sortAttractions("All Ages", allAges);
-// ACTIVELAND CHANGES SELECT ELEMENT VALUE INTO A SPACED UPPERCASE STRING SO LANDS CAN BE CHANGED FORM THE SELECT ELEMENT
-let activeLand = document.getElementById("attraction-land-sorter").value.replace("-"," ").split(" ");
-for (let i = 0; i < activeLand.length; i++) {
-    activeLand[i] = activeLand[i][0].toUpperCase() + activeLand[i].substr(1);
-}
-// RUNS WHEN LAND SELECT ELEMENT IS CHANGED
+
+// Handle land selection change
 function changeActiveLand() {
-    // UPDATES WHICH LANDS ARE SHOWN BASED ON THE VALUE OF THE LAND SELECT ELEMENT
-    function updateLand(land) {
-        activeLand = document.getElementById("attraction-land-sorter").value.replace("-"," ").split(" ");
-        for (let i = 0; i < activeLand.length; i++) {
-            activeLand[i] = activeLand[i][0].toUpperCase() + activeLand[i].substr(1);
-        }
-        for (let i = 0; i < attractionTypeArrays.length; i++) {
-            for (let j = 0; j < attractionTypeArrays[i].length; j++) {
-                if (!attractionTypeArrays[i][j].innerHTML.includes(`${land}`)) {
-                    $(attractionTypeArrays[i][j]).hide();
-                } else if (attractionTypeArrays[i][j].innerHTML.includes(`${land}`)) {
-                    activeRides.push(attractionTypeArrays[i][j]);
-                    if (!activeAttractions[0] && !activeAttractions[1] && !activeAttractions[2] && !activeAttractions[3] && !activeAttractions[4] && !activeAttractions[5] && !activeAttractions[6] && !activeAttractions[7]) {
-                        $(attractionTypeArrays[i][j]).show();
-                    } else {
-                        updateActiveRides();
-                    }
-                }
-            }
-        }
-    }
-    switch (document.getElementById("attraction-land-sorter").value) {
-        case "fae-forest":
-            updateLand("Fae Forest");
-            break;
-        case "future-world":
-            updateLand("Future World");
-            break;
-        case "hallowwood":
-            updateLand("Hallowwood");
-            break;
-        case "pirate-island":
-            updateLand("Pirate Island");
-        break;
-        case "wild-west":
-            updateLand("Wild West");
-            break;
-        default:
-            activeLand = document.getElementById("attraction-land-sorter").value.replace("-"," ").split(" ");
-            for (let i = 0; i < activeLand.length; i++) {
-                activeLand[i] = activeLand[i][0].toUpperCase() + activeLand[i].substr(1);
-            }
-            for (let i = 0; i < attractionTypeArrays.length; i++) {
-                for (let j = 0; j < attractionTypeArrays[i].length; j++) {
-                    activeRides.push(attractionTypeArrays[i][j]);
-                    if (!activeAttractions[0] && !activeAttractions[1] && !activeAttractions[2] && !activeAttractions[3] && !activeAttractions[4] && !activeAttractions[5] && !activeAttractions[6] && !activeAttractions[7]) {
-                        $(attractionTypeArrays[i][j]).show();
-                    }
-                }
-            }
-            break;
-    }
+    const selectedValue = document.getElementById("attraction-land-sorter").value;
+    filterState.selectedLand = landMap[selectedValue] || 'All Lands';
+    filterAttractions();
 }
-let activeRides = [];
-// SHOW ONLY ATTRACTIONS THAT MATCH THE FILTER CRITERIA
-function updateActiveRides() {
-    attractionTypeArrays.forEach(i => {
-        $(i).hide();
+
+// Deselect all buttons in a category
+function deselectAllButtons(buttonIds) {
+    buttonIds.forEach(id => {
+        const button = $('#' + id);
+        if (button.length) {
+            button.css('background-color', 'white');
+            button.css('color', 'black');
+        }
     });
-    activeRides = [];
-    // ADD ALL ATTRACTIONS WITH BUTTONS THAT ARE PRESSED
-    for (let i = 0; i < activeAttractions.length; i++) {
-        if (activeAttractions[i] || !activeAttractions[0] && !activeAttractions[1] && !activeAttractions[2] && !activeAttractions[3] && !activeAttractions[4] && !activeAttractions[5] && !activeAttractions[6] && !activeAttractions[7]) {
-            for (let j = 0; j < attractionTypeArrays[i].length; j++) {
-                if (attractionTypeArrays[i][j].innerHTML.includes(activeLand.join(" ")) || activeLand.join(" ") === "All Lands") {
-                    attractionTypeArrays[i].forEach(j => {
-                        activeRides.push(j);
-                    });
-                }
-            }
-        }
-    }
-    $(activeRides).show();
-    // HIDE ANY LAND THAT DOESN'T MATCH WHICH BUTTONS ARE SELECTED
-    switch (document.getElementById("attraction-land-sorter").value) {
-        case "fae-forest":
-            activeRides.forEach(i => {
-                if (!i.innerHTML.includes(`Fae Forest`)) {
-                    $(i).hide();
-                }
-            });
-            break;
-        case "future-world":
-            activeRides.forEach(i => {
-                if (!i.innerHTML.includes(`Future World`)) {
-                    $(i).hide();
-                }
-            });
-            break;
-        case "hallowwood":
-            activeRides.forEach(i => {
-                if (!i.innerHTML.includes(`Hallowwood`)) {
-                    $(i).hide();
-                }
-            });
-            break;
-        case "pirate-island":
-            activeRides.forEach(i => {
-                if (!i.innerHTML.includes(`Pirate Island`)) {
-                    $(i).hide();
-                }
-            });
-        break;
-        case "wild-west":
-            activeRides.forEach(i => {
-                if (!i.innerHTML.includes(`Wild West`)) {
-                    $(i).hide();
-                }
-            });
-            break;
-        default:
-            activeRides.forEach(i => {
-                    $(i).show();
-            });
-            break;
-    }
-    // HIDE ANY ATTRACTIONS THAT DON'T MATCH WHICH BUTTONS ARE SELECTED
-    if (activeAttractions[4] || activeAttractions[5] || activeAttractions[6] || activeAttractions[7]) {
-        if (!activeAttractions[4]) {
-            activeRides.forEach(k => {
-                if (k.innerHTML.includes(`Kids`)) {
-                    $(k).hide();
-                }
-            });
-        }
-        if (!activeAttractions[5]) {
-            activeRides.forEach(k => {
-                if (k.innerHTML.includes(`Teens`) && (!k.innerHTML.includes("Adults") && activeAttractions[6])) {
-                    $(k).hide();
-                }
-            });
-        }
-        if (!activeAttractions[6]) {
-            activeRides.forEach(k => {
-                if (k.innerHTML.includes(`Adults`) && (!k.innerHTML.includes("Teens") && activeAttractions[5])) {
-                    $(k).hide();
-                }
-                
-            });
-        }
-        if (!activeAttractions[7]) {
-            activeRides.forEach(k => {
-                if (k.innerHTML.includes(`All Ages`)) {
-                    $(k).hide();
-                }
-            });
-        }
-    }
-    if (activeAttractions[0] || activeAttractions[1] || activeAttractions[2] || activeAttractions[3]) {
-        for (let i = 0; i < 4; i++) {
-            if (!activeAttractions[i]) {
-                activeRides.forEach(k => {
-                    if (k.innerHTML.includes(`${attractionTypeStrings[i]}`)) {
-                        $(k).hide();
-                    }
-                });
-            }
-        }
-    }
 }
-// UPDATE VISIBILITY OF ATTRACTIONS IF THEY ARE ACTIVELY CLICKED ON OR NOT
-function changeActiveAttractionButton(trigger) {
-    for (let i = 0; i < attractionTypeStrings.length; i++) {
-        if (trigger === attractionTypeStrings[i]) {
-            if (activeAttractions[i]) {
-                activeAttractions[i] = false;
-                $(attractionButtons[i]).css('background-color','white');
-                $(attractionButtons[i]).css('color', 'black');
-            } else {
-                activeAttractions[i] = true;
-                $(attractionButtons[i]).css('background-color','var(--future-color)');
-                $(attractionButtons[i]).css('color', 'white');
-            }
+
+// Handle filter button clicks (single-select behavior)
+function toggleFilterButton(buttonId) {
+    const config = buttonConfig[buttonId];
+    if (!config) return;
+    
+    const button = $('#' + buttonId);
+    const category = config.category;
+    
+    // Determine which buttons group this belongs to
+    const relatedButtons = category === 'type' ? typeButtons : ageButtons;
+    
+    // Check if this button is already selected
+    const currentValue = category === 'type' ? filterState.selectedType : filterState.selectedAges;
+    const isCurrentlySelected = currentValue === config.value;
+    
+    if (isCurrentlySelected) {
+        // Deselect - clear the filter
+        if (category === 'type') {
+            filterState.selectedType = null;
+        } else {
+            filterState.selectedAges = null;
         }
+        button.css('background-color', 'white');
+        button.css('color', 'black');
+    } else {
+        // Select this one, deselect others in the category
+        deselectAllButtons(relatedButtons);
+        
+        if (category === 'type') {
+            filterState.selectedType = config.value;
+        } else {
+            filterState.selectedAges = config.value;
+        }
+        button.css('background-color', 'var(--future-color)');
+        button.css('color', 'white');
     }
-    updateActiveRides();
+    
+    filterAttractions();
 }
-$("#thrill-rides-button").click(function() {
-    changeActiveAttractionButton("Thrill Rides");
-});
-$("#gentle-rides-button").click(function() {
-    changeActiveAttractionButton("Gentle Rides");
-});
-$("#characters-button").click(function() {
-    changeActiveAttractionButton("Characters");
-});
-$("#shows-button").click(function() {
-    changeActiveAttractionButton("Shows");
-});
-$("#kids-button").click(function() {
-    changeActiveAttractionButton("Kids");
-});
-$("#teens-button").click(function() {
-    changeActiveAttractionButton("Teens");
-});
-$("#adults-button").click(function() {
-    changeActiveAttractionButton("Adults");
-});
-$("#all-ages-button").click(function() {
-    changeActiveAttractionButton("All Ages");
+
+// Attach event listeners to all filter buttons
+document.addEventListener('DOMContentLoaded', () => {
+    // Type and age filter buttons
+    Object.keys(buttonConfig).forEach(buttonId => {
+        const button = document.getElementById(buttonId);
+        if (button) {
+            button.addEventListener('click', () => toggleFilterButton(buttonId));
+        }
+    });
+    
+    // Show all attractions initially
+    filterAttractions();
 });

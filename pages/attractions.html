@@ -24,7 +24,7 @@
         <a href="attractions.html" class="nav-item nav-link active"><i class="fa-solid fa-shuttle-space"></i> Attractions</a>
         <a href="tickets.html" class="nav-item nav-link"><i class="fa-solid fa-ticket"></i> Tickets</a>
         <a href="dining.html" class="nav-item nav-link"> <i class="fa-solid fa-utensils"></i> Dining</a>
-        <span class="cart-button" class="nav-item nav-link">&nbsp<i class="fas fa-shopping-cart pl-1"></i>&nbspMy Cart</span>
+        <span class="cart-button nav-item nav-link"><i class="fas fa-shopping-cart pl-1"></i> My Cart</span>
     </div>
     <nav class="nav nav-tabs justify-content-center">
         <a href="../index.html" class="nav-item nav-link top-nav" style="font-size: 1.5rem"><em>Mystic Grove</em></a>
@@ -32,19 +32,19 @@
         <a href="attractions.html" class="nav-item nav-link top-nav active"><i class="fa-solid fa-shuttle-space"></i> Attractions</a>
         <a href="tickets.html" class="nav-item nav-link top-nav"><i class="fa-solid fa-ticket"></i> Tickets</a>
         <a href="dining.html" class="nav-item nav-link top-nav"> <i class="fa-solid fa-utensils"></i> Dining</a>
-        <span class="cart-button" class="nav-item nav-link top-nav"><i class="fas fa-shopping-cart pl-1"></i>&nbspMy Cart</span>
+        <span class="cart-button nav-item nav-link top-nav"><i class="fas fa-shopping-cart pl-1"></i>&nbspMy Cart</span>
     </nav>
     <div id="cart">
         <h1 class="mt-2">My Cart</h1>
-        <span id="exit-cart-button">X</span>
+        <span id="exit-cart-button">×</span>
         <div id="cart-items"></div>
-        <div>
-            <button class="cart-buttons" id="clear-button">Clear</button>
-            <button class="cart-buttons">Checkout</button>
+        <div class="cart-actions">
+            <button class="cart-buttons" id="clear-button">Clear Cart</button>
+            <button class="cart-buttons checkout-btn">Checkout</button>
         </div>
     </div>
     <div class="container-center" id="attractions-page-container">
-      <div class="container-fixed" id="attractions-container">
+      <div class="container-fixed" id="attractions-container-wrapper">
         <div id="attractions-header" class="row">
           <h1 class="col-lg-8 col-12">Attractions and Experiences</h1>
           <select class="col-lg-4 col-12" name="attraction-land-sorter" id="attraction-land-sorter" onchange="changeActiveLand()">
@@ -57,13 +57,13 @@
           </select>
         </div>
         <div class="container-center">
-          <div class="attraction-type-sorter" class="row">
+          <div class="attraction-type-sorter row">
             <button class="col-md-3" id="thrill-rides-button">Thrill Rides</button>
             <button class="col-md-3" id="gentle-rides-button">Gentle Rides</button>
             <button class="col-md-3" id="characters-button">Characters</button>
             <button class="col-md-3" id="shows-button">Shows</button>
           </div>
-          <div class="attraction-type-sorter" class="row">
+          <div class="attraction-type-sorter row">
             <button class="col-md-3" id="kids-button">Kids</button>
             <button class="col-md-3" id="teens-button">Teens</button>
             <button class="col-md-3" id="adults-button">Adults</button>
