@@ -588,6 +588,20 @@ footer p {
   cursor: pointer;
   padding: .5rem;
 }
+.cart-total {
+  width: 95%;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #fff;
+  border: 2px solid #333;
+  border-radius: 8px;
+  text-align: center;
+}
+.cart-total h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
 #shop-container {
   background-color: #fdfdfd;
 }
